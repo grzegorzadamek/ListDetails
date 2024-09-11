@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Hero } from "../hero";
-import { HeroService } from "../hero.service";
+import { Item } from "../item";
+import { ItemService } from "../item.service";
 import { RouterLink } from "@angular/router";
 import { ItemSearchComponent } from "../item-search/item-search.component";
 
@@ -15,17 +15,17 @@ import { ItemSearchComponent } from "../item-search/item-search.component";
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent implements OnInit{
-  heroes: Hero[] = [];
+  items: Item[] = [];
 
-  constructor(private heroService: HeroService) {}
+  constructor(private itemService: ItemService) {}
 
   ngOnInit(): void {
-    this.getHeroes();
+    this.getItems();
   }
 
-  getHeroes(): void {
-    this.heroService.getHeroes().subscribe(heroes => {
-      this.heroes = heroes.slice(1, 5);
+  getItems(): void {
+    this.itemService.getItems().subscribe(items => {
+      this.items = items.slice(1, 5);
     });
   }
 }

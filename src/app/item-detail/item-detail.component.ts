@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from "@angular/forms"; // <-- NgModel lives here
 import { Location, UpperCasePipe } from "@angular/common";
-import { Hero } from "../hero";
+import { Item } from "../item";
 import { ActivatedRoute } from "@angular/router";
-import { HeroService } from "../hero.service";
+import { ItemService } from "../item.service";
 
 @Component({
   selector: 'app-item-detail',
@@ -16,21 +16,21 @@ import { HeroService } from "../hero.service";
   styleUrl: './item-detail.component.css'
 })
 export class ItemDetailComponent implements OnInit {
-  item: Hero | undefined;
+  item: Item | undefined;
 
   constructor(
     private route: ActivatedRoute,
-    private heroService: HeroService,
+    private itemService: ItemService,
     private location: Location
   ) {}
 
   ngOnInit(): void {
-    this.getHero();
+    this.getItem();
   }
 
-  getHero(): void {
+  getItem(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.heroService.getHero(id)
+    this.itemService.getItem(id)
       .subscribe(item => this.item = item);
   }
 
@@ -40,7 +40,7 @@ export class ItemDetailComponent implements OnInit {
 
   save(): void {
     if(this.item){
-      this.heroService.updateHero(this.item)
+      this.itemService.updateItem(this.item)
         .subscribe(() => this.goBack());
     }
   }

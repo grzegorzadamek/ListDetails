@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { debounceTime, distinctUntilChanged, Observable, Subject, switchMap } from "rxjs";
-import { Hero } from "../hero";
+import { Item } from "../item";
 import { RouterLink } from "@angular/router";
 import { AsyncPipe, NgForOf } from "@angular/common";
-import { HeroService } from "../hero.service";
+import { ItemService } from "../item.service";
 
 @Component({
   selector: 'app-item-search',
@@ -17,10 +17,10 @@ import { HeroService } from "../hero.service";
   styleUrl: './item-search.component.css'
 })
 export class ItemSearchComponent implements OnInit {
-  items$!: Observable<Hero[]>;
+  items$!: Observable<Item[]>;
   private searchTerms = new Subject<string>();
 
-  constructor(private heroService: HeroService) {}
+  constructor(private itemService: ItemService) {}
 
   // Summary: Push the input 'search term' into the observable stream.
   // You type something, you'll immediately get here and emit 'term' into the searchTerms with .next(term)
@@ -47,7 +47,7 @@ export class ItemSearchComponent implements OnInit {
       // The "flattening" process takes values emitted by inner observable and sends them directly to the output Observable.
       switchMap(term =>
         // the call here gives us inner observable but who subscribes to it? => switchMap 👆
-        this.heroService.searchHeroes(term))
+        this.itemService.searchItems(term))
     );
   }
 }

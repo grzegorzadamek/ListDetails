@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {
   NgFor
 } from "@angular/common";
-import { Hero } from "../hero";
-import { HeroService } from "../hero.service";
+import { Item } from "../item";
+import { ItemService } from "../item.service";
 import { RouterLink } from "@angular/router";
 
 @Component({
@@ -17,18 +17,18 @@ import { RouterLink } from "@angular/router";
   styleUrl: './items.component.css'
 })
 export class ItemsComponent implements OnInit {
-  items: Hero[] = [];
+  items: Item[] = [];
 
-  constructor(private heroService: HeroService) {}
+  constructor(private itemService: ItemService) {}
 
   // To use this lifecycle hook method, you don't really have to do 'implements OnInit' on this class.
   // It works without that just fine.
   ngOnInit(){
-    this.getHeroes();
+    this.getItems();
   }
 
-  getHeroes(): void {
-    this.heroService.getHeroes().subscribe(items => {
+  getItems(): void {
+    this.itemService.getItems().subscribe(items => {
       this.items = items;
     });
   }
@@ -37,15 +37,15 @@ export class ItemsComponent implements OnInit {
     name = name.trim();
     if(!name) { return; }
 
-    this.heroService.addHero({ name } as Hero)
+    this.itemService.addItem({ name } as Item)
       .subscribe(item => {
         this.items.push(item);
       });
   }
 
-  deleteItem(item: Hero): void {
+  deleteItem(item: Item): void {
     // Immediately remove hero from the list, anticipating that the HeroService succeeds on the server
     this.items = this.items.filter(h => h !== item);
-    this.heroService.deleteHero(item.id).subscribe();
+    this.itemService.deleteItem(item.id).subscribe();
   }
 }
