@@ -6,18 +6,18 @@ import { AsyncPipe, NgForOf } from "@angular/common";
 import { HeroService } from "../hero.service";
 
 @Component({
-  selector: 'app-hero-search',
+  selector: 'app-item-search',
   standalone: true,
   imports: [
     RouterLink,
     AsyncPipe,
     NgForOf
   ],
-  templateUrl: './hero-search.component.html',
-  styleUrl: './hero-search.component.css'
+  templateUrl: './item-search.component.html',
+  styleUrl: './item-search.component.css'
 })
-export class HeroSearchComponent implements OnInit {
-  heroes$!: Observable<Hero[]>;
+export class ItemSearchComponent implements OnInit {
+  items$!: Observable<Hero[]>;
   private searchTerms = new Subject<string>();
 
   constructor(private heroService: HeroService) {}
@@ -33,7 +33,7 @@ export class HeroSearchComponent implements OnInit {
     // Learn more here: https://youtu.be/vtCDRiG__D4?si=F2qjot5atRc0MTFX&t=1459
     // 'this.heroes$' is outer observable which is subscribed in the template: 'heroes$ | async'
     // This just means that when search term is pushed into 'this.searchTerms', emit them here
-    this.heroes$ = this.searchTerms.pipe(
+    this.items$ = this.searchTerms.pipe(
       // wait 300ms after each keystroke before considering the term
       // So the 'heroService.searchHeroes' call will only happen after 300ms
       debounceTime(300),

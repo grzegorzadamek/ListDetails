@@ -16,5 +16,5 @@ import { MessagesComponent } from "./messages/messages.component";
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'Tour of heroes';
+  title = 'List of items';
 }

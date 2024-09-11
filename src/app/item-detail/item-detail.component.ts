@@ -6,17 +6,17 @@ import { ActivatedRoute } from "@angular/router";
 import { HeroService } from "../hero.service";
 
 @Component({
-  selector: 'app-hero-detail',
+  selector: 'app-item-detail',
   standalone: true,
     imports: [
         FormsModule,
         UpperCasePipe
     ],
-  templateUrl: './hero-detail.component.html',
-  styleUrl: './hero-detail.component.css'
+  templateUrl: './item-detail.component.html',
+  styleUrl: './item-detail.component.css'
 })
-export class HeroDetailComponent implements OnInit {
-  hero: Hero | undefined;
+export class ItemDetailComponent implements OnInit {
+  item: Hero | undefined;
 
   constructor(
     private route: ActivatedRoute,
@@ -31,7 +31,7 @@ export class HeroDetailComponent implements OnInit {
   getHero(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.heroService.getHero(id)
-      .subscribe(hero => this.hero = hero);
+      .subscribe(item => this.item = item);
   }
 
   goBack(): void {
@@ -39,8 +39,8 @@ export class HeroDetailComponent implements OnInit {
   }
 
   save(): void {
-    if(this.hero){
-      this.heroService.updateHero(this.hero)
+    if(this.item){
+      this.heroService.updateHero(this.item)
         .subscribe(() => this.goBack());
     }
   }

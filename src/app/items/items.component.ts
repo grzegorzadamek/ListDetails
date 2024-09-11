@@ -7,17 +7,17 @@ import { HeroService } from "../hero.service";
 import { RouterLink } from "@angular/router";
 
 @Component({
-  selector: 'app-heroes',
+  selector: 'app-items',
   standalone: true,
   imports: [
     NgFor,
     RouterLink
   ],
-  templateUrl: './heroes.component.html',
-  styleUrl: './heroes.component.css'
+  templateUrl: './items.component.html',
+  styleUrl: './items.component.css'
 })
-export class HeroesComponent implements OnInit {
-  heroes: Hero[] = [];
+export class ItemsComponent implements OnInit {
+  items: Hero[] = [];
 
   constructor(private heroService: HeroService) {}
 
@@ -28,24 +28,24 @@ export class HeroesComponent implements OnInit {
   }
 
   getHeroes(): void {
-    this.heroService.getHeroes().subscribe(heroes => {
-      this.heroes = heroes;
+    this.heroService.getHeroes().subscribe(items => {
+      this.items = items;
     });
   }
 
-  addHero(name: string): void {
+  addItem(name: string): void {
     name = name.trim();
     if(!name) { return; }
 
     this.heroService.addHero({ name } as Hero)
-      .subscribe(hero => {
-        this.heroes.push(hero);
+      .subscribe(item => {
+        this.items.push(item);
       });
   }
 
-  deleteHero(hero: Hero): void {
+  deleteItem(item: Hero): void {
     // Immediately remove hero from the list, anticipating that the HeroService succeeds on the server
-    this.heroes = this.heroes.filter(h => h !== hero);
-    this.heroService.deleteHero(hero.id).subscribe();
+    this.items = this.items.filter(h => h !== item);
+    this.heroService.deleteHero(item.id).subscribe();
   }
 }
