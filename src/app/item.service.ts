@@ -49,7 +49,7 @@ export class ItemService {
       );
   }
 
-  addItem(item: Item): Observable<Item> {
+  addItem(item: {firstName: string, lastName: string}): Observable<{firstName: string, lastName: string}> {
     return this.httpClient.post<Item>(this.itemsUrl, item, this.httpOptions)
       .pipe(
         tap((newItem: Item) => this.log(`added item w/ id=${newItem.id}`)),

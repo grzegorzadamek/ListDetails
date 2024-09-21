@@ -4,7 +4,7 @@ import {
 } from "@angular/common";
 import { Item } from "../item";
 import { ItemService } from "../item.service";
-import { Router } from "@angular/router";
+import { Router, RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-items',
@@ -19,7 +19,7 @@ import { Router } from "@angular/router";
 export class ItemsComponent implements OnInit {
   items: Item[] = [];
 
-  constructor(private itemService: ItemService) {}
+  constructor(private itemService: ItemService, private router: Router) {}
 
   // To use this lifecycle hook method, you don't really have to do 'implements OnInit' on this class.
   // It works without that just fine.
@@ -33,14 +33,8 @@ export class ItemsComponent implements OnInit {
     });
   }
 
-  addItem(name: string): void {
-    name = name.trim();
-    if(!name) { return; }
-
-    this.itemService.addItem({ name } as Item)
-      .subscribe(item => {
-        this.items.push(item);
-      });
+  addItem(): void {
+    this.router.navigateByUrl('/add');
   }
 
   deleteItem(item: Item): void {

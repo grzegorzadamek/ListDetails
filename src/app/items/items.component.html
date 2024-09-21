@@ -1,17 +1,14 @@
 <h2>My Items</h2>
 
 <div>
-  <label for="new-item">Item name: </label>
-  <input id="new-item" #itemName />
-
-  <button type="button" (click)="addItem(itemName.value); itemName.value=''">Add item</button>
+  <button type="button" (click)="addItem()">Add item</button>
 </div>
 
 <ul class="items">
   @for(item of items; track item.id){
     <li>
       <a routerLink="/detail/{{item.id}}">
-        <span class="badge">{{item.id}}</span> {{item.name}}
+        <span class="badge">{{item.id}}</span>{{item.lastName}}, {{item.firstName}}
       </a>
       <button type="button" class="delete" title="delete item" (click)="deleteItem(item)">x</button>
     </li>
@@ -19,7 +16,3 @@
     <span>You have no items!</span>
   }
 </ul>
-
-<!-- Old Code. Remove it. -->
-<!-- Property Binding: Bind 'selecteditem' to child component's 'item' property -->
-<!--<app-item-detail [item]="selecteditem"></app-item-detail>-->

@@ -1,27 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms"; // <-- NgModel lives here
 import { Location, UpperCasePipe } from "@angular/common";
-import { Item } from "../item";
-import { ActivatedRoute } from "@angular/router";
 import { ItemService } from "../item.service";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-item-detail',
+  selector: 'app-item-add',
   standalone: true,
     imports: [
         FormsModule,
         UpperCasePipe,
         ReactiveFormsModule
     ],
-  templateUrl: './item-detail.component.html',
-  styleUrl: './item-detail.component.css'
+  templateUrl: './item-add.component.html',
+  styleUrl: './item-add.component.css'
 })
-export class ItemDetailComponent implements OnInit {
+export class ItemAddComponent implements OnInit {
   userForm!: FormGroup;
 
   constructor(
-    private route: ActivatedRoute,
     private itemService: ItemService,
     private location: Location,
     private fb: FormBuilder
@@ -33,36 +30,19 @@ export class ItemDetailComponent implements OnInit {
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
     });
-    this.getItem();
   }
 
-  getItem(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.itemService.getItem(id)
-          .subscribe(item => {
-            if (item) {
-              this.userForm.patchValue({
-                firstName: item.firstName,
-                lastName: item.lastName,
-                id: item.id
-              });
-            }
-          });
-  }
 
   goBack(): void {
     this.location.back();
   }
 
   onSubmit(): void {
-    let item: Item = {id: 0, firstName: '', lastName: ''};
-    item.id = this.userForm.get('id')?.value ?? 0;
+    let item: {firstName: string, lastName: string} = {firstName: '', lastName: ''};
     item.firstName = this.userForm.get('firstName')?.value ?? '';
     item.lastName = this.userForm.get('lastName')?.value ?? '';
 
-    if(item){
-      this.itemService.updateItem(item)
-        .subscribe(() => this.goBack());
-    }
+    this.itemService.addItem(item)
+      .subscribe(() => this.goBack());
   }
 }

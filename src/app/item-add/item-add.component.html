@@ -1,3 +1,4 @@
+Add New Item
 <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
     <div>
       <label for="firstName">First Name:</label>
@@ -16,10 +17,6 @@
           Nazwisko jest wymagane
         </div>
       }
-    </div>
-    <div>
-      <label for="id">Id:</label>
-      <span id="id">{{ ' ' + userForm.get('id')?.value }}</span>
     </div>
 
     <button type="button" (click)="goBack()">go back</button>
