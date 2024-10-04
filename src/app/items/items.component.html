@@ -5,7 +5,7 @@
 </div>
 
 <ul class="items">
-  @for(item of items; track item.id){
+  @for (item of items(); track item.id) {
     <li>
       <a routerLink="/detail/{{item.id}}">
         <span class="badge">{{item.id}}</span>{{item.lastName}}, {{item.firstName}}

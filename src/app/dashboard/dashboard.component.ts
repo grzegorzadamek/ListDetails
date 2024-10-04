@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, signal, effect } from '@angular/core';
 import { Item } from "../item";
 import { ItemService } from "../item.service";
 import { RouterLink } from "@angular/router";
@@ -14,18 +14,17 @@ import { ItemSearchComponent } from "../item-search/item-search.component";
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
-export class DashboardComponent implements OnInit{
-  items: Item[] = [];
 
-  constructor(private itemService: ItemService) {}
+export class DashboardComponent {
+  items = signal<Item[]>([]);
 
-  ngOnInit(): void {
-    this.getItems();
+  constructor(private itemService: ItemService) {
+    effect(() => this.getItems());
   }
 
   getItems(): void {
-    this.itemService.getItems().subscribe(items => {
-      this.items = items.slice(0, 4);
+    this.itemService.getItems().subscribe(allItems => {
+      this.items.set(allItems.slice(0, 4));
     });
   }
 }

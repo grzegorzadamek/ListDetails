@@ -1,6 +1,6 @@
 <h2>Top Items</h2>
 <div class="heroes-menu">
-  @for(item of items; track item.id){
+  @for(item of items(); track item.id){
     <!-- routerLink attribute is selector for the RouterLink directive that turns user clicks into router navigations.-->
     <a
       routerLink="/detail/{{item.id}}">

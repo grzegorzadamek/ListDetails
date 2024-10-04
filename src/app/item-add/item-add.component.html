@@ -1,9 +1,9 @@
-Add New Item
-<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+<h2>Add New Item</h2>
+<form (ngSubmit)="onSubmit()">
     <div>
       <label for="firstName">First Name:</label>
-      <input id="firstName" formControlName="firstName">
-      @if (userForm.get('firstName')?.invalid && userForm.get('firstame')?.touched) {
+      <input id="firstName" [ngModel]="firstName()" (ngModelChange)="firstName.set($event)" name="firstName">
+      @if (!isFirstNameValid()) {
         <div>
           Imię jest wymagane
         </div>
@@ -11,8 +11,8 @@ Add New Item
     </div>
     <div>
       <label for="lastName">Last Name:</label>
-      <input id="lastName" formControlName="lastName">
-      @if (userForm.get('lastName')?.invalid && userForm.get('lastName')?.touched) {
+      <input id="lastName" [ngModel]="lastName()" (ngModelChange)="lastName.set($event)" name="lastName">
+      @if (!isLastNameValid()) {
         <div>
           Nazwisko jest wymagane
         </div>
@@ -20,5 +20,5 @@ Add New Item
     </div>
 
     <button type="button" (click)="goBack()">go back</button>
-    <button type="submit" [disabled]="userForm.invalid">Save</button>
-  </form>
+    <button type="submit" [disabled]="!isFormValid()">Save</button>
+</form>
