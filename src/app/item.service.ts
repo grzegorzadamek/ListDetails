@@ -4,6 +4,12 @@ import { catchError, Observable, of, tap } from "rxjs";
 import { MessageService } from "./message.service";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
+// import {
+//   AngularFirestoreDocument,
+//   AngularFirestore,
+//   AngularFirestoreCollection
+// } from “angularfire2/firestore”;
+
 @Injectable({
   providedIn: 'root'
 })
@@ -11,6 +17,7 @@ export class ItemService {
   // :base/:collectionName
   // collectionName is the 'heroes' data object in the in-memory-data-service.ts
   private itemsUrl = 'api/items'; // URL to web api
+  private testUrl = 'http://localhost:3000/data';
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -22,13 +29,27 @@ export class ItemService {
   }
 
   getItems(): Observable<Item[]> {
-    return this.httpClient.get<Item[]>(this.itemsUrl)
-      .pipe(
-        tap(_ => this.log('fetched items')),
-        // catchError operator passes 'error' to the error handling function
-        // 'handleError' function returns a function that will take the 'error' passed by catchError operator
-        catchError(this.handleError<Item[]>('getItems', []))
-      );
+    // return this.httpClient.get<Item[]>(this.itemsUrl)
+    return this.httpClient.get<Item[]>(this.testUrl, 
+      {
+        headers:
+          new HttpHeaders(
+            {
+              'Content-Type': 'application/json',
+              'X-Requested-With': 'XMLHttpRequest',
+              'MyClientCert': '',        // This is empty
+              'MyToken': ''              // This is empty
+            }
+          )
+      }
+    );
+    
+      // .pipe(
+      //   tap(_ => this.log('fetched items')),
+      //   // catchError operator passes 'error' to the error handling function
+      //   // 'handleError' function returns a function that will take the 'error' passed by catchError operator
+      //   catchError(this.handleError<Item[]>('getItems', []))
+      // );
   }
 
   /** GET hero by id. Will 404 if id not found */
@@ -72,7 +93,7 @@ export class ItemService {
       return of([]);
     }
 
-    const url = `${this.itemsUrl}/?name=${term}`;
+    const url = `${this.itemsUrl}/?firstName=${term}` || `${this.itemsUrl}/?lastName=${term}`;
 
     return this.httpClient.get<Item[]>(url)
       .pipe(
@@ -108,3 +129,26 @@ export class ItemService {
     this.messageService.add(`ItemService: ${message}`);
   }
 }
+
+
+// // Import the functions you need from the SDKs you need
+// import { initializeApp } from "firebase/app";
+// import { getAnalytics } from "firebase/analytics";
+// // TODO: Add SDKs for Firebase products that you want to use
+// // https://firebase.google.com/docs/web/setup#available-libraries
+
+// // Your web app's Firebase configuration
+// // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// const firebaseConfig = {
+//   apiKey: "AIzaSyCYQlCOgfo6y6V49M-JqNsyTmjPTib4iYw",
+//   authDomain: "listdetails-35f03.firebaseapp.com",
+//   projectId: "listdetails-35f03",
+//   storageBucket: "listdetails-35f03.appspot.com",
+//   messagingSenderId: "774740303305",
+//   appId: "1:774740303305:web:ed434ff90f309a36cedc18",
+//   measurementId: "G-G3W19RTDD2"
+// };
+
+// // Initialize Firebase
+// const app = initializeApp(firebaseConfig);
+// const analytics = getAnalytics(app);

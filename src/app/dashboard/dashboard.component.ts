@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit{
 
   getItems(): void {
     this.itemService.getItems().subscribe(items => {
-      this.items = items.slice(1, 5);
+      this.items = items.slice(0, 4);
     });
   }
 }

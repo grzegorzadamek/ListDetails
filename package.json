@@ -1,5 +1,5 @@
 {
-  "name": "tour-of-heroes",
+  "name": "list-details",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -19,6 +19,8 @@
     "@angular/platform-browser-dynamic": "^17.0.0",
     "@angular/router": "^17.0.0",
     "angular-in-memory-web-api": "^0.17.0",
+    "angularfire2": "^5.4.2",
+    "firebase": "^10.13.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"
