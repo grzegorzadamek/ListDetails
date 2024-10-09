@@ -17,6 +17,7 @@ import { ItemSearchComponent } from "../item-search/item-search.component";
 
 export class DashboardComponent {
   items = signal<Item[]>([]);
+  public isLoading = signal(true);
 
   constructor(private itemService: ItemService) {
     effect(() => this.getItems());
@@ -24,6 +25,7 @@ export class DashboardComponent {
 
   getItems(): void {
     this.itemService.getItems().subscribe(allItems => {
+      this.isLoading.set(false);
       this.items.set(allItems.slice(0, 4));
     });
   }

@@ -1,4 +1,5 @@
 <h2>Top Items</h2>
+@if (!isLoading()) {
 <div class="heroes-menu">
   @for(item of items(); track item.id){
     <!-- routerLink attribute is selector for the RouterLink directive that turns user clicks into router navigations.-->
@@ -8,5 +9,8 @@
     </a>
   }
 </div>
+} @else {
+  <span>Loading...</span>
+}
 
 <app-item-search></app-item-search>

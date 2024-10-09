@@ -4,6 +4,7 @@
   <button type="button" (click)="addItem()">Add item</button>
 </div>
 
+@if (!isLoading()) {
 <ul class="items">
   @for (item of items(); track item.id) {
     <li>
@@ -16,3 +17,6 @@
     <span>You have no items!</span>
   }
 </ul>
+} @else {
+  <span>Loading...</span>
+}

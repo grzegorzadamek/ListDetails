@@ -1,4 +1,4 @@
-import { Component, signal, computed } from '@angular/core';
+import { Component, signal, computed, effect } from '@angular/core';
 import {
   NgFor
 } from "@angular/common";
@@ -19,15 +19,18 @@ import { Router, RouterLink } from "@angular/router";
 export class ItemsComponent {
   items = signal<Item[]>([]);
   selectedItem = signal<Item | null>(null);
-
+  public isLoading = signal(true);
 
   constructor(private itemService: ItemService, private router: Router) {
-    this.getItems();
+    effect(() => this.getItems());
   }
 
   getItems(): void {
+
     this.itemService.getItems()
-      .subscribe(items => this.items.set(items));
+      .subscribe(items => {
+        this.isLoading.set(false);
+        this.items.set(items)});
   }
 
   onSelect(item: Item): void {
