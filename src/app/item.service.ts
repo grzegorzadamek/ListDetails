@@ -17,7 +17,8 @@ export class ItemService {
   // :base/:collectionName
   // collectionName is the 'heroes' data object in the in-memory-data-service.ts
   private itemsUrl = 'api/items'; // URL to web api
-  private testUrl = 'http://localhost:3000/data';
+  private dataUrl = 'http://localhost:3000/data';
+  private itemUrl = 'http://localhost:3000/item';
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -30,7 +31,7 @@ export class ItemService {
 
   getItems(): Observable<Item[]> {
     // return this.httpClient.get<Item[]>(this.itemsUrl)
-    return this.httpClient.get<Item[]>(this.testUrl, 
+    return this.httpClient.get<Item[]>(this.dataUrl, 
       {
         headers:
           new HttpHeaders(
@@ -54,7 +55,7 @@ export class ItemService {
 
   /** GET hero by id. Will 404 if id not found */
   getItem(id: number): Observable<Item> {
-    const url = `${this.itemsUrl}/${id}`;
+    const url = `${this.itemUrl}/${id}`;
     return this.httpClient.get<Item>(url)
       .pipe(
         tap(_ => this.log(`fetched item id=${id}`)),

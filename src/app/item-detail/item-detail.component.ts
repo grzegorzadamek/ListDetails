@@ -32,6 +32,7 @@ export class ItemDetailComponent implements OnInit {
       id: [''],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
+      email: ['', Validators.required],
     });
     this.getItem();
   }
@@ -41,9 +42,11 @@ export class ItemDetailComponent implements OnInit {
     this.itemService.getItem(id)
           .subscribe(item => {
             if (item) {
+              console.log(item);
               this.userForm.patchValue({
                 firstName: item.firstName,
                 lastName: item.lastName,
+                email: item.email,
                 id: item.id
               });
             }
@@ -55,10 +58,11 @@ export class ItemDetailComponent implements OnInit {
   }
 
   onSubmit(): void {
-    let item: Item = {id: 0, firstName: '', lastName: ''};
+    let item: Item = {id: 0, firstName: '', lastName: '', email: ''};
     item.id = this.userForm.get('id')?.value ?? 0;
     item.firstName = this.userForm.get('firstName')?.value ?? '';
     item.lastName = this.userForm.get('lastName')?.value ?? '';
+    item.email = this.userForm.get('email')?.value ?? '';
 
     if(item){
       this.itemService.updateItem(item)

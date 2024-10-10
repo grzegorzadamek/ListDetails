@@ -18,6 +18,16 @@
       }
     </div>
     <div>
+      <label for="email">Last Name:</label>
+      <input id="email" formControlName="email">
+      @if (userForm.get('email')?.invalid && userForm.get('email')?.touched) {
+        <div>
+          Email jest wymagany
+        </div>
+      }
+    </div>
+
+    <div>
       <label for="id">Id:</label>
       <span id="id">{{ ' ' + userForm.get('id')?.value }}</span>
     </div>
