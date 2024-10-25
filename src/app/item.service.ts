@@ -19,6 +19,7 @@ export class ItemService {
   private itemsUrl = 'api/items'; // URL to web api
   private dataUrl = 'http://localhost:3000/data';
   private itemUrl = 'http://localhost:3000/item';
+  private addItemUrl = 'http://localhost:3000/item/add';
 
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -72,7 +73,7 @@ export class ItemService {
   }
 
   addItem(item: {firstName: string, lastName: string}): Observable<{firstName: string, lastName: string}> {
-    return this.httpClient.post<Item>(this.itemsUrl, item, this.httpOptions)
+    return this.httpClient.post<Item>(this.addItemUrl, item, this.httpOptions)
       .pipe(
         tap((newItem: Item) => this.log(`added item w/ id=${newItem.id}`)),
         catchError(this.handleError<Item>('addItem'))
@@ -80,7 +81,7 @@ export class ItemService {
   }
 
   deleteItem(id: number): Observable<Item> {
-    const url = `${this.itemsUrl}/${id}`;
+    const url = `${this.itemUrl}/${id}`;
     return this.httpClient.delete<Item>(url, this.httpOptions)
       .pipe(
         tap(_ => this.log(`deleted item id=${id}`)),

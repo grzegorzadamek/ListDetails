@@ -18,7 +18,11 @@
         </div>
       }
     </div>
-
+    <div>
+      <label for="lastName">Email:</label>
+      <input id="lastName" [ngModel]="email()" (ngModelChange)="email.set($event)" name="email">
+    </div>
+    
     <button type="button" (click)="goBack()">go back</button>
     <button type="submit" [disabled]="!isFormValid()">Save</button>
 </form>

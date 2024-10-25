@@ -18,6 +18,7 @@ import { signal, computed } from '@angular/core';
 export class ItemAddComponent {
   firstName = signal('');
   lastName = signal('');
+  email = signal('');
 
   isFirstNameValid = computed(() => this.firstName().trim().length >= 2 && this.firstName().trim().length <= 50);
   isLastNameValid = computed(() => this.lastName().trim().length >= 2 && this.lastName().trim().length <= 50);
@@ -36,7 +37,8 @@ export class ItemAddComponent {
     if (this.isFormValid()) {
       const item = {
         firstName: this.firstName(),
-        lastName: this.lastName()
+        lastName: this.lastName(),
+        email: this.email()
       };
 
       this.itemService.addItem(item)
@@ -50,5 +52,9 @@ export class ItemAddComponent {
 
   updateLastName(value: string): void {
     this.lastName.set(value);
+  }
+
+  updateEmail(value: string): void {
+    this.email.set(value);
   }
 }
