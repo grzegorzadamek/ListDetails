@@ -65,7 +65,7 @@ export class ItemService {
   }
 
   updateItem(item: Item): Observable<any> {
-    return this.httpClient.put(this.itemsUrl, item, this.httpOptions)
+    return this.httpClient.put(this.itemUrl, item, this.httpOptions)
       .pipe(
         tap(_ => this.log(`updated item id=${item.id}`)),
         catchError(this.handleError<any>('updateItem'))
