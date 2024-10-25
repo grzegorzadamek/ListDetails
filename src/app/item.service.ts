@@ -16,8 +16,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 export class ItemService {
   // :base/:collectionName
   // collectionName is the 'heroes' data object in the in-memory-data-service.ts
-  private itemsUrl = 'api/items'; // URL to web api
-  private dataUrl = 'http://localhost:3000/data';
+  private itemsUrl = 'http://localhost:3000/items';
   private itemUrl = 'http://localhost:3000/item';
   private addItemUrl = 'http://localhost:3000/item/add';
 
@@ -31,8 +30,7 @@ export class ItemService {
   }
 
   getItems(): Observable<Item[]> {
-    // return this.httpClient.get<Item[]>(this.itemsUrl)
-    return this.httpClient.get<Item[]>(this.dataUrl, 
+    return this.httpClient.get<Item[]>(this.itemsUrl, 
       {
         headers:
           new HttpHeaders(
