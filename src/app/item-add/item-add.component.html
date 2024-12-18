@@ -1,28 +1,28 @@
 <h2>Add New Item</h2>
 <form (ngSubmit)="onSubmit()">
-    <div>
-      <label for="firstName">First Name:</label>
-      <input id="firstName" [ngModel]="firstName()" (ngModelChange)="firstName.set($event)" name="firstName">
-      @if (!isFirstNameValid()) {
-        <div>
-          Imię jest wymagane
-        </div>
-      }
-    </div>
-    <div>
-      <label for="lastName">Last Name:</label>
-      <input id="lastName" [ngModel]="lastName()" (ngModelChange)="lastName.set($event)" name="lastName">
-      @if (!isLastNameValid()) {
-        <div>
-          Nazwisko jest wymagane
-        </div>
-      }
-    </div>
-    <div>
-      <label for="lastName">Email:</label>
-      <input id="lastName" [ngModel]="email()" (ngModelChange)="email.set($event)" name="email">
-    </div>
-    
-    <button type="button" (click)="goBack()">go back</button>
-    <button type="submit" [disabled]="!isFormValid()">Save</button>
+  <div>
+    <label for="firstName">First Name:</label>
+    <input id="firstName" [ngModel]="firstName()" (ngModelChange)="firstName.set($event)" name="firstName">
+    @if (!isFirstNameValid()) {
+      <div>
+        Imię jest wymagane
+      </div>
+    }
+  </div>
+  <div>
+    <label for="lastName">Last Name:</label>
+    <input id="lastName" [ngModel]="lastName()" (ngModelChange)="lastName.set($event)" name="lastName">
+    @if (!isLastNameValid()) {
+      <div>
+        Nazwisko jest wymagane
+      </div>
+    }
+  </div>
+  <div>
+    <label for="email">Email:</label>
+    <input id="email" [ngModel]="email()" (ngModelChange)="email.set($event)" name="email">
+  </div>
+
+  <button type="button" (click)="goBack()">go back</button>
+  <button type="submit" [disabled]="!isFormValid()">Save</button>
 </form>

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { FormsModule } from "@angular/forms";
-import { Location, UpperCasePipe } from "@angular/common";
-import { ItemService } from "../item.service";
+import { FormsModule } from '@angular/forms';
+import { Location, UpperCasePipe } from '@angular/common';
+import { ItemService } from '../item.service';
 import { signal, computed } from '@angular/core';
 
 @Component({
@@ -14,7 +14,6 @@ import { signal, computed } from '@angular/core';
   templateUrl: './item-add.component.html',
   styleUrls: ['./item-add.component.css']
 })
-
 export class ItemAddComponent {
   firstName = signal('');
   lastName = signal('');

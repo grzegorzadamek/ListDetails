@@ -5,18 +5,18 @@
 </div>
 
 @if (!isLoading()) {
-<ul class="items">
-  @for (item of items(); track item.id) {
-    <li>
-      <a routerLink="/detail/{{item.id}}">
-        <span class="badge">{{item.id}}</span>{{item.lastName}}, {{item.firstName}}
-      </a>
-      <button type="button" class="delete" title="delete item" (click)="deleteItem(item)">x</button>
-    </li>
-  } @empty {
-    <span>You have no items!</span>
-  }
-</ul>
+  <ul class="items">
+    @for (item of items(); track item.id) {
+      <li>
+        <a routerLink="/detail/{{item.id}}">
+          <span class="badge">{{item.id}}</span>{{item.lastName}}, {{item.firstName}}
+        </a>
+        <button type="button" class="delete" title="delete item" (click)="deleteItem(item)">x</button>
+      </li>
+    } @empty {
+      <span>You have no items!</span>
+    }
+  </ul>
 } @else {
   <span>Loading...</span>
 }

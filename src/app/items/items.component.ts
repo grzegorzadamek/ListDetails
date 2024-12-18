@@ -1,7 +1,5 @@
 import { Component, signal, computed, effect } from '@angular/core';
-import {
-  NgFor
-} from "@angular/common";
+import { NgFor } from "@angular/common";
 import { Item } from "../item";
 import { ItemService } from "../item.service";
 import { Router, RouterLink } from "@angular/router";
@@ -26,11 +24,11 @@ export class ItemsComponent {
   }
 
   getItems(): void {
-
     this.itemService.getItems()
       .subscribe(items => {
         this.isLoading.set(false);
-        this.items.set(items)});
+        this.items.set(items);
+      });
   }
 
   onSelect(item: Item): void {
@@ -44,7 +42,6 @@ export class ItemsComponent {
   }
 
   deleteItem(item: Item): void {
-    // Immediately remove hero from the list, anticipating that the HeroService succeeds on the server
     this.items.update(items => items.filter(h => h !== item));
     this.itemService.deleteItem(item.id).subscribe();
   }

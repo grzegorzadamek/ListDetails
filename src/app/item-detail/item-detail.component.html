@@ -1,41 +1,39 @@
 <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-    <div>
-      <label for="firstName">First Name:</label>
-      <input id="firstName" formControlName="firstName">
-      @if (userForm.get('firstName')?.invalid && userForm.get('firstame')?.touched) {
-        <div>
-          Imię jest wymagane
-        </div>
-      }
-    </div>
-    <div>
-      <label for="lastName">Last Name:</label>
-      <input id="lastName" formControlName="lastName">
-      @if (userForm.get('lastName')?.invalid && userForm.get('lastName')?.touched) {
-        <div>
-          Nazwisko jest wymagane
-        </div>
-      }
-    </div>
-    <div>
-      <label for="email">Email:</label>
-      <input id="email" formControlName="email">
-      @if (userForm.get('email')?.invalid && userForm.get('email')?.touched) {
-        <div>
-          Email jest wymagany
-        </div>
-      }
-    </div>
-
-    <div>
-      <label for="id">Id:</label>
-      <span id="id">{{ ' ' + userForm.get('id')?.value }}</span>
-    </div>
-
-    <button type="button" (click)="goBack()">go back</button>
-    <button type="submit" [disabled]="userForm.invalid || loading">Save</button>
+  <div>
+    <label for="firstName">First Name:</label>
+    <input id="firstName" formControlName="firstName">
+    @if (userForm.get('firstName')?.invalid && userForm.get('firstame')?.touched) {
+      <div>
+        Imię jest wymagane
+      </div>
+    }
+  </div>
+  <div>
+    <label for="lastName">Last Name:</label>
+    <input id="lastName" formControlName="lastName">
+    @if (userForm.get('lastName')?.invalid && userForm.get('lastName')?.touched) {
+      <div>
+        Nazwisko jest wymagane
+      </div>
+    }
+  </div>
+  <div>
+    <label for="email">Email:</label>
+    <input id="email" formControlName="email">
+    @if (userForm.get('email')?.invalid && userForm.get('email')?.touched) {
+      <div>
+        Email jest wymagany
+      </div>
+    }
+  </div>
+  <div>
+    <label for="id">Id:</label>
+    <span id="id">{{ ' ' + userForm.get('id')?.value }}</span>
+  </div>
+  <button type="button" (click)="goBack()">go back</button>
+  <button type="submit" [disabled]="userForm.invalid || isLoading()">Save</button>
 </form>
 
-@if (loading) {
+@if (isLoading()) {
   <div class="loading">Loading...</div>
 }

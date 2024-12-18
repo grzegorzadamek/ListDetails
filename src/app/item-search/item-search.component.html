@@ -2,12 +2,12 @@
   <label for="search-box">Item Search</label>
   <input id="search-box" #searchBox (input)="search(searchBox.value)" />
   <ul class="search-result">
-    <!--$ is a convention that indicates heroes$ is an Observable, not an array-->
-    <!--async pipe subscribes to an Observable automatically so you won't have to do so in component class-->
-      <li *ngFor="let item of items$ | async" >
+    @for (item of items$ | async; track item.id) {
+      <li>
         <a routerLink="/detail/{{item.id}}">
           {{item.firstName}}
         </a>
       </li>
+    }
   </ul>
 </div>
