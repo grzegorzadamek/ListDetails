@@ -1,18 +1,31 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { ItemSearchComponent } from './item-search.component';
+import { ItemService } from '../item.service';
+import { of } from 'rxjs';
+import { Item } from '../item';
 
-import { HeroSearchComponent } from './hero-search.component';
+describe('ItemSearchComponent', () => {
+  let component: ItemSearchComponent;
+  let fixture: ComponentFixture<ItemSearchComponent>;
+  let mockItemService: jasmine.SpyObj<ItemService>;
 
-describe('HeroSearchComponent', () => {
-  let component: HeroSearchComponent;
-  let fixture: ComponentFixture<HeroSearchComponent>;
+  const mockItems: Item[] = [
+    { id: 1, firstName: 'Item A', lastName: ' last 1', email: 'mail 1' },
+    { id: 2, firstName: 'Item B', lastName: ' last 2', email: 'mail 2' }
+  ];
 
   beforeEach(async () => {
+    mockItemService = jasmine.createSpyObj('ItemService', ['searchItems']);
+    mockItemService.searchItems.and.returnValue(of(mockItems));
+
     await TestBed.configureTestingModule({
-      imports: [HeroSearchComponent]
-    })
-    .compileComponents();
-    
-    fixture = TestBed.createComponent(HeroSearchComponent);
+      imports: [ItemSearchComponent],
+      providers: [
+        { provide: ItemService, useValue: mockItemService }
+      ]
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(ItemSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -20,4 +33,43 @@ describe('HeroSearchComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should initialize items$ observable', () => {
+    expect(component.items$).toBeDefined();
+  });
+
+  it('should debounce search terms', fakeAsync(() => {
+    // Perform multiple searches rapidly
+    component.search('a');
+    component.search('ab');
+    component.search('abc');
+
+    // Fast-forward time
+    tick(300);
+
+    // Verify that only the last search term was processed
+    expect(mockItemService.searchItems).toHaveBeenCalledWith('abc');
+    expect(mockItemService.searchItems).toHaveBeenCalledTimes(1);
+  }));
+
+  it('should not search with same term twice', fakeAsync(() => {
+    component.search('test');
+    tick(300);
+    component.search('test');
+    tick(300);
+
+    expect(mockItemService.searchItems).toHaveBeenCalledWith('test');
+    expect(mockItemService.searchItems).toHaveBeenCalledTimes(1);
+  }));
+
+  it('should switch to new search term', fakeAsync(() => {
+    component.search('first');
+    tick(300);
+    component.search('second');
+    tick(300);
+
+    expect(mockItemService.searchItems).toHaveBeenCalledWith('first');
+    expect(mockItemService.searchItems).toHaveBeenCalledWith('second');
+    expect(mockItemService.searchItems).toHaveBeenCalledTimes(2);
+  }));
 });

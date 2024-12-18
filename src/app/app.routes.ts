@@ -5,10 +5,11 @@ import { ItemAddComponent } from "./item-add/item-add.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 
 export const routes: Routes = [
-  { path: '', redirectTo:'/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'items', component: ItemsComponent },
   { path: 'add', component: ItemAddComponent },
-  // parameterized route
-  { path: 'detail/:id', component: ItemDetailComponent }
+  { path: 'detail/:id', component: ItemDetailComponent },
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  // This route needs to be last - it will catch all unknown paths
+  { path: '**', redirectTo: '/dashboard' }
 ];

@@ -1,0 +1,11 @@
+RewriteEngine On
+RewriteCond %{HTTP_HOST} !^netly\.ct8\.pl$ [NC]
+RewriteRule ^(.*)$ https://netly.ct8.pl/$1 [R=301,L]
+
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://netly.ct8.pl/$1 [R=301,L]
+
+# For Angular routing
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.html [L]
