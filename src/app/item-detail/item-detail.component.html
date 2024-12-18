@@ -33,5 +33,9 @@
     </div>
 
     <button type="button" (click)="goBack()">go back</button>
-    <button type="submit" [disabled]="userForm.invalid">Save</button>
-  </form>
+    <button type="submit" [disabled]="userForm.invalid || loading">Save</button>
+</form>
+
+@if (loading) {
+  <div class="loading">Loading...</div>
+}

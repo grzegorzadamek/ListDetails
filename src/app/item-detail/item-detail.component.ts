@@ -18,7 +18,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrl: './item-detail.component.css'
 })
 export class ItemDetailComponent implements OnInit {
-  userForm!: FormGroup;
+  public userForm!: FormGroup;
+  public loading: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -38,11 +39,14 @@ export class ItemDetailComponent implements OnInit {
   }
 
   getItem(): void {
+    this.loading = true;
+    this.userForm.disable();
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.itemService.getItem(id)
           .subscribe(item => {
             if (item) {
-              console.log(item);
+              this.loading = false;
+              this.userForm.enable();
               this.userForm.patchValue({
                 firstName: item.firstName,
                 lastName: item.lastName,
