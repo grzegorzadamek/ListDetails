@@ -7,7 +7,7 @@
 @if (!isLoading()) {
   <ul class="items">
     @for (item of items(); track item.id) {
-      <li>
+      <li class="item">
         <a routerLink="/detail/{{item.id}}">
           <span class="badge">{{item.id}}</span>{{item.lastName}}, {{item.firstName}}
         </a>

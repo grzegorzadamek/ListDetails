@@ -3,7 +3,11 @@
   margin: 0 0 2em 0;
   list-style-type: none;
   padding: 0;
-  width: 15em;
+  width: 18rem;
+
+  display: block;
+  max-height: 15rem;
+  overflow-y: auto;
 }
 
 input {
@@ -17,6 +21,7 @@ input {
 .items li {
   position: relative;
   cursor: pointer;
+  width: 16rem;
 }
 
 .items li:hover {
@@ -32,7 +37,9 @@ input {
   height: 1.6em;
   border-radius: 4px;
   display: block;
-  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .items a:hover {
