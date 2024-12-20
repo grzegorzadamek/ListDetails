@@ -69,17 +69,17 @@
 }
 
 .delete-button {
-  background: #ff4444;
-  color: white;
-  border: none;
-  padding: 0.5rem;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s;
+background: #f5b5b5;
+color: white;
+border: none;
+padding: 0.2rem;
+border-radius: 6px;
+cursor: pointer;
+transition: background 0.3s;
 }
 
 .delete-button:hover {
-  background: #cc0000;
+  background: #f68080;
 }
 
 .empty-state, .loading-state {
