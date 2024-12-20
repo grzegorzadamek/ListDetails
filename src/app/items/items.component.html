@@ -17,8 +17,8 @@
             <h3>{{item.lastName}}, {{item.firstName}}</h3>
             <div class="item-actions">
               <a class="details-button" routerLink="/detail/{{item.id}}">
-                <i class="fas fa-info-circle"></i>
                 Details
+                <span class="icon">✎</span>
               </a>
               <button type="button" class="delete-button" (click)="deleteItem(item)">
                 <span class="icon">❌</span>
