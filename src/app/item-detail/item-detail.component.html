@@ -1,39 +1,62 @@
-<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-  <div>
-    <label for="firstName">First Name:</label>
-    <input id="firstName" formControlName="firstName">
-    @if (userForm.get('firstName')?.invalid && userForm.get('firstame')?.touched) {
-      <div>
-        Imię jest wymagane
-      </div>
-    }
-  </div>
-  <div>
-    <label for="lastName">Last Name:</label>
-    <input id="lastName" formControlName="lastName">
-    @if (userForm.get('lastName')?.invalid && userForm.get('lastName')?.touched) {
-      <div>
-        Nazwisko jest wymagane
-      </div>
-    }
-  </div>
-  <div>
-    <label for="email">Email:</label>
-    <input id="email" formControlName="email">
-    @if (userForm.get('email')?.invalid && userForm.get('email')?.touched) {
-      <div>
-        Email jest wymagany
-      </div>
-    }
-  </div>
-  <div>
-    <label for="id">Id:</label>
-    <span id="id">{{ ' ' + userForm.get('id')?.value }}</span>
-  </div>
-  <button type="button" (click)="goBack()">go back</button>
-  <button type="submit" [disabled]="userForm.invalid || isLoading()">Save</button>
-</form>
+<div class="detail-container">
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="detail-form">
+    <h2 class="form-title">Item Details</h2>
 
-@if (isLoading()) {
-  <div class="loading">Loading...</div>
-}
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input
+        id="firstName"
+        formControlName="firstName"
+        class="form-input"
+        placeholder="Enter first name">
+      @if (userForm.get('firstName')?.invalid && userForm.get('firstName')?.touched) {
+      <div class="error-message">First name is required</div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input
+        id="lastName"
+        formControlName="lastName"
+        class="form-input"
+        placeholder="Enter last name">
+      @if (userForm.get('lastName')?.invalid && userForm.get('lastName')?.touched) {
+      <div class="error-message">Last name is required</div>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        id="email"
+        formControlName="email"
+        class="form-input"
+        placeholder="Enter email">
+      @if (userForm.get('email')?.invalid && userForm.get('email')?.touched) {
+      <div class="error-message">Email is required</div>
+      }
+    </div>
+
+    <div class="form-group id-display">
+      <label for="id">ID:</label>
+      <span id="id" class="id-value">{{ userForm.get('id')?.value }}</span>
+    </div>
+
+    <div class="button-group">
+      <button type="button" (click)="goBack()" class="btn btn-secondary">
+        ← Back
+      </button>
+      <button type="submit" [disabled]="userForm.invalid || isLoading()" class="btn btn-primary">
+        Save Changes
+      </button>
+    </div>
+  </form>
+
+  @if (isLoading()) {
+  <div class="loading-overlay">
+    <div class="loading-spinner"></div>
+    <span>Loading...</span>
+  </div>
+  }
+</div>

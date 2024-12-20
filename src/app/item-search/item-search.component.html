@@ -1,11 +1,32 @@
-<div id="search-component">
-  <label for="search-box">Item Search</label>
-  <input id="search-box" #searchBox (input)="search(searchBox.value)" />
-  <ul class="search-result">
+<div class="search-container">
+  <div class="search-header">
+    <label for="search-box" class="search-label">
+      <i class="fas fa-search"></i>
+      Item Search
+    </label>
+    <input
+      id="search-box"
+      #searchBox
+      (input)="search(searchBox.value)"
+      placeholder="Search items..."
+      class="search-input"
+    />
+  </div>
+
+  <ul class="search-results">
     @for (item of items$ | async; track item.id) {
-      <li>
-        <a routerLink="/detail/{{item.id}}">
-          {{item.firstName}}
+      <li class="result-item">
+        <a routerLink="/detail/{{item.id}}" class="item-link">
+          <div class="item-card">
+            <div class="item-avatar">
+              {{item.firstName.charAt(0)}}
+            </div>
+            <div class="item-info">
+              <span class="item-name">{{item.firstName}}</span>
+              <span class="item-id">#{{item.id}}</span>
+            </div>
+            <i class="fas fa-chevron-right arrow-icon"></i>
+          </div>
         </a>
       </li>
     }

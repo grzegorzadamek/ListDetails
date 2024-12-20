@@ -1,22 +1,42 @@
-<h2>My Items</h2>
+<section class="items-container">
+  <h2>My Items</h2>
 
-<div>
-  <button type="button" (click)="addItem()">Add item</button>
-</div>
+  <div class="actions">
+    <button type="button" class="add-button" (click)="addItem()">
+      <i class="fas fa-plus"></i>
+      Add item
+    </button>
+  </div>
 
-@if (!isLoading()) {
-  <ul class="items">
-    @for (item of items(); track item.id) {
-      <li class="item">
-        <a routerLink="/detail/{{item.id}}">
-          <span class="badge">{{item.id}}</span>{{item.lastName}}, {{item.firstName}}
-        </a>
-        <button type="button" class="delete" title="delete item" (click)="deleteItem(item)">x</button>
-      </li>
-    } @empty {
-      <span>You have no items!</span>
-    }
-  </ul>
-} @else {
-  <span>Loading...</span>
-}
+  @if (!isLoading()) {
+    <div class="items-grid">
+      @for (item of items(); track item.id) {
+        <div class="item-card">
+          <div class="item-content">
+            <span class="item-id">#{{item.id}}</span>
+            <h3>{{item.lastName}}, {{item.firstName}}</h3>
+            <div class="item-actions">
+              <a class="details-button" routerLink="/detail/{{item.id}}">
+                <i class="fas fa-info-circle"></i>
+                Details
+              </a>
+              <button type="button" class="delete-button" (click)="deleteItem(item)">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      } @empty {
+        <div class="empty-state">
+          <i class="fas fa-box-open"></i>
+          <p>You have no items!</p>
+        </div>
+      }
+    </div>
+  } @else {
+  <div class="loading-overlay">
+    <div class="loading-spinner"></div>
+    <span>Loading...</span>
+  </div>
+  }
+</section>

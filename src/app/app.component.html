@@ -1,10 +1,22 @@
-<h1>{{ title }}</h1>
+<header class="app-header">
+  <h1>{{ title }}</h1>
 
-<nav>
-  <a routerLink="/dashboard">Dashboard</a>
-  <a routerLink="/items">Items</a>
-</nav>
+  <nav class="navigation">
+    <a routerLink="/dashboard" routerLinkActive="active">
+      <span class="icon">🏠</span>
+      Dashboard
+    </a>
+    <a routerLink="/items" routerLinkActive="active">
+      <span class="icon">📦</span>
+      Items
+    </a>
+  </nav>
+</header>
 
-<router-outlet></router-outlet>
+<main class="content">
+  <router-outlet></router-outlet>
+</main>
 
-<!-- <app-messages></app-messages> -->
+<footer class="app-footer">
+  <p>List Of Items 2025</p>
+</footer>

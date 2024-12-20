@@ -2,21 +2,51 @@
 h1 {
   margin-bottom: 0;
 }
-nav a {
+.app-header {
+  background: #2c3e50;
   padding: 1rem;
-  text-decoration: none;
-  margin-top: 10px;
-  margin-right: 10px;
-  display: inline-block;
-  background-color: #e8e8e8;
-  color: #3d3d3d;
-  border-radius: 4px;
+  color: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-nav a:hover {
-  color: white;
-  background-color: #42545C;
+.navigation {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
 }
-nav a:active {
-  background-color: black;
+
+.navigation a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navigation a:hover {
+  background: #34495e;
+}
+
+.navigation a.active {
+  background: #3498db;
+}
+
+.icon {
+  font-size: 1.2rem;
+}
+
+.content {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.app-footer {
+  text-align: center;
+  padding: 1rem;
+  background: #f8f9fa;
+  margin-top: 2rem;
 }

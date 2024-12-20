@@ -1,54 +1,71 @@
-/* DashboardComponent's private CSS styles */
-
-h2 {
-  text-align: center;
+.dashboard-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.heroes-menu {
-  padding: 0;
-  margin: auto;
-  max-width: 1000px;
+.heroes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
 
-  /* flexbox */
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
+.item-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.item-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.item-card a {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-content: flex-start;
-  align-items: flex-start;
-}
-
-a {
-  background-color: #3f525c;
-  border-radius: 2px;
-  padding: 1rem;
-  font-size: 1.2rem;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
   text-decoration: none;
-  display: inline-block;
-  color: #fff;
+  color: #333;
+}
+
+.item-avatar {
+  width: 60px;
+  height: 60px;
+  background: #3f51b5;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.item-info {
   text-align: center;
-  width: 100%;
-  min-width: 70px;
-  margin: .5rem auto;
-  box-sizing: border-box;
-
-  /* flexbox */
-  order: 0;
-  flex: 0 1 auto;
-  align-self: auto;
 }
 
-@media (min-width: 600px) {
-  a {
-    width: 18%;
-    box-sizing: content-box;
-  }
+.item-info h3 {
+  margin: 0;
+  font-size: 18px;
 }
 
-a:hover {
-  background-color: black;
+.item-id {
+  color: #666;
+  font-size: 14px;
+}
+
+.loading-spinner {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+}
+
+.search-component {
+  margin-top: 30px;
+  display: block;
 }

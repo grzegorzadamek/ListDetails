@@ -1,14 +1,27 @@
-<h2>Top Items</h2>
-@if (!isLoading()) {
-  <div class="heroes-menu">
+<div class="dashboard-container">
+  <h2>Top Items</h2>
+
+  @if (!isLoading()) {
+  <div class="heroes-grid">
     @for(item of items(); track item.id) {
+    <div class="item-card">
       <a routerLink="/detail/{{item.id}}">
-        {{item.firstName}}
+        <div class="item-avatar">
+          {{item.firstName.charAt(0)}}
+        </div>
+        <div class="item-info">
+          <h3>{{item.firstName}}</h3>
+          <span class="item-id">#{{item.id}}</span>
+        </div>
       </a>
+    </div>
     }
   </div>
-} @else {
-  <span>Loading...</span>
-}
+  } @else {
+  <div class="loading-spinner">
+    <span>Loading...</span>
+  </div>
+  }
 
-<app-item-search></app-item-search>
+  <app-item-search class="search-component"></app-item-search>
+</div>

@@ -1,47 +1,95 @@
-/* HeroSearch private styles */
+.search-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
 
-label {
+.search-header {
+  margin-bottom: 20px;
+}
+
+.search-label {
   display: block;
+  margin-bottom: 8px;
+  color: #333;
   font-weight: bold;
-  font-size: 1.2rem;
-  margin-top: 1rem;
-  margin-bottom: .5rem;
-
 }
-input {
-  padding: .5rem;
+
+.search-input {
   width: 100%;
-  max-width: 600px;
-  box-sizing: border-box;
-  display: block;
+  padding: 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
 }
 
-input:focus {
-  outline: #336699 auto 1px;
+.search-input:focus {
+  outline: none;
+  border-color: #1976d2;
 }
 
-li {
-  list-style-type: none;
+.search-results {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
-.search-result li a {
-  border-bottom: 1px solid gray;
-  border-left: 1px solid gray;
-  border-right: 1px solid gray;
-  display: inline-block;
-  width: 100%;
-  max-width: 600px;
-  padding: .5rem;
-  box-sizing: border-box;
+
+.result-item {
+  margin: 8px 0;
+}
+
+.item-link {
   text-decoration: none;
-  color: black;
+  color: inherit;
 }
 
-.search-result li a:hover {
-  background-color: #435A60;
+.item-card {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.item-card:hover {
+  background: #e9ecef;
+  transform: translateX(5px);
+}
+
+.item-avatar {
+  width: 40px;
+  height: 40px;
+  background: #1976d2;
   color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-right: 16px;
 }
 
-ul.search-result {
-  margin-top: 0;
-  padding-left: 0;
+.item-info {
+  flex-grow: 1;
+}
+
+.item-name {
+  display: block;
+  font-weight: 500;
+  color: #2c3e50;
+}
+
+.item-id {
+  font-size: 0.8em;
+  color: #6c757d;
+}
+
+.arrow-icon {
+  color: #6c757d;
+  margin-left: 12px;
 }
