@@ -1,7 +1,7 @@
 import { Component, signal, computed, effect } from '@angular/core';
 import { NgFor } from "@angular/common";
-import { Item } from "../item";
-import { ItemService } from "../item.service";
+import { Item } from "src/app/models/item";
+import { ItemService } from "src/app/services/item.service";
 import { Router, RouterLink } from "@angular/router";
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Location, UpperCasePipe } from '@angular/common';
-import { ItemService } from '../item.service';
+import { ItemService } from 'src/app/services/item.service';
 import { signal, computed } from '@angular/core';
 
 @Component({

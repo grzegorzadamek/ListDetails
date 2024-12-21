@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
-import { ItemsComponent } from "./items/items.component";
-import { ItemDetailComponent } from "./item-detail/item-detail.component";
-import { ItemAddComponent } from "./item-add/item-add.component";
-import { DashboardComponent } from "./dashboard/dashboard.component";
+import { ItemsComponent } from "./components/items/items.component";
+import { ItemDetailComponent } from "./components/item-detail/item-detail.component";
+import { ItemAddComponent } from "./components/item-add/item-add.component";
+import { DashboardComponent } from "./components/dashboard/dashboard.component";
 
 export const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },

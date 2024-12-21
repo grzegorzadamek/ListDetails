@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { MessagesComponent } from "./messages/messages.component";
 
 @Component({
   selector: 'app-root',
@@ -9,8 +8,7 @@ import { MessagesComponent } from "./messages/messages.component";
   imports: [
     CommonModule,
     RouterOutlet,
-    RouterLink,
-    MessagesComponent
+    RouterLink
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

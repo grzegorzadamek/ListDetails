@@ -1,9 +1,9 @@
 import { Component, signal, effect } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { Location, UpperCasePipe } from '@angular/common';
-import { Item } from '../item';
+import { Item } from 'src/app/models/item';
 import { ActivatedRoute } from '@angular/router';
-import { ItemService } from '../item.service';
+import { ItemService } from 'src/app/services/item.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({

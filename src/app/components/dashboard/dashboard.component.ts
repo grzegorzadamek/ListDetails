@@ -1,8 +1,8 @@
 import { Component, signal, effect } from '@angular/core';
-import { Item } from "../item";
-import { ItemService } from "../item.service";
+import { Item } from "src/app/models/item";
+import { ItemService } from "src/app/services/item.service";
 import { RouterLink } from "@angular/router";
-import { ItemSearchComponent } from "../item-search/item-search.component";
+import { ItemSearchComponent } from "src/app/components/item-search/item-search.component";
 
 @Component({
   selector: 'app-dashboard',

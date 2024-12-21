@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { debounceTime, distinctUntilChanged, Observable, Subject, switchMap } from 'rxjs';
-import { Item } from '../item';
+import { Item } from 'src/app/models/item';
 import { RouterLink } from '@angular/router';
 import { AsyncPipe, NgForOf } from '@angular/common';
-import { ItemService } from '../item.service';
+import { ItemService } from 'src/app/services/item.service';
 
 @Component({
   selector: 'app-item-search',
