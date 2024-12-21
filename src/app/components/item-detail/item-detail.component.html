@@ -45,10 +45,10 @@
 
     <div class="button-group">
       <button type="button" (click)="goBack()" class="btn btn-secondary">
-        ← Back
+        <i class="fas fa-arrow-left"></i> Back
       </button>
       <button type="submit" [disabled]="userForm.invalid || isLoading()" class="btn btn-primary">
-        Save Changes
+        <i class="fas fa-check"></i> Save Changes
       </button>
     </div>
   </form>
