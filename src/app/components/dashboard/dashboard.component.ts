@@ -3,24 +3,32 @@ import { Item } from "src/app/models/item";
 import { ItemService } from "src/app/services/item.service";
 import { RouterLink } from "@angular/router";
 import { ItemSearchComponent } from "src/app/components/item-search/item-search.component";
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
   imports: [
     RouterLink,
-    ItemSearchComponent
+    ItemSearchComponent,
+    TranslateModule
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
 
 export class DashboardComponent {
+
   items = signal<Item[]>([]);
   public isLoading = signal(true);
 
-  constructor(private itemService: ItemService) {
-    effect(() => this.getItems());
+  constructor(private itemService: ItemService,
+  _translateService: TranslateService
+  ) {
+    effect(() => {
+        _translateService.setDefaultLang('pl');
+        _translateService.use('pl');
+    this.getItems()});
   }
 
   getItems(): void {

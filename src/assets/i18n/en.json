@@ -1,0 +1,12 @@
+{
+  "title": "List of Items",
+  "items": "Items",
+  "language": {
+    "polish": "Polish",
+    "english": "English"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "topItems": "Top Items"
+  }
+}

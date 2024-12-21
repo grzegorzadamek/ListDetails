@@ -1,14 +1,23 @@
+<!-- src/app/app.component.html -->
 <header class="app-header">
-  <h1>{{ title }}</h1>
+  <div class="header-content">
+    <h1>{{ 'title' | translate }}</h1>
+    <div class="language-switcher">
+      <select #langSelect (change)="changeLanguage(langSelect.value)">
+        <option value="pl">{{ 'language.polish' | translate }}</option>
+        <option value="en">{{ 'language.english' | translate }}</option>
+      </select>
+    </div>
+  </div>
 
   <nav class="navigation">
     <a routerLink="/dashboard" routerLinkActive="active">
       <span class="icon">🏠</span>
-      Dashboard
+      {{ 'dashboard.title' | translate }}
     </a>
     <a routerLink="/items" routerLinkActive="active">
       <span class="icon">📦</span>
-      Items
+      {{ 'items' | translate }}
     </a>
   </nav>
 </header>

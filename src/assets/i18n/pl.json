@@ -1,0 +1,12 @@
+{
+  "title": "Lista przedmiotów",
+  "items": "Przedmioty",
+  "language": {
+    "polish": "Polski",
+    "english": "Angielski"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "topItems": "Top 4 przedmiotów"
+  }
+}

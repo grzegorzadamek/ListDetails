@@ -1,6 +1,8 @@
+// src/app/app.component.ts
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -8,11 +10,21 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   imports: [
     CommonModule,
     RouterOutlet,
-    RouterLink
+    RouterLink,
+    TranslateModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'List of items';
+  constructor(
+    private _translateService: TranslateService,
+  ) {
+    _translateService.setDefaultLang('pl');
+    _translateService.use('pl');
+  }
+
+  changeLanguage(lang: string): void {
+    this._translateService.use(lang);
+  }
 }
