@@ -3,13 +3,15 @@ import { NgFor } from "@angular/common";
 import { Item } from "src/app/models/item";
 import { ItemService } from "src/app/services/item.service";
 import { Router, RouterLink } from "@angular/router";
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-items',
   standalone: true,
   imports: [
     NgFor,
-    RouterLink
+    RouterLink,
+    TranslateModule
   ],
   templateUrl: './items.component.html',
   styleUrl: './items.component.css'
@@ -19,8 +21,13 @@ export class ItemsComponent {
   selectedItem = signal<Item | null>(null);
   public isLoading = signal(true);
 
-  constructor(private itemService: ItemService, private router: Router) {
-    effect(() => this.getItems());
+  constructor(
+    private itemService: ItemService,
+    private router: Router
+    ) {
+    effect(() => {
+        this.getItems()
+    });
   }
 
   getItems(): void {

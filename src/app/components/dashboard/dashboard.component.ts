@@ -22,13 +22,10 @@ export class DashboardComponent {
   items = signal<Item[]>([]);
   public isLoading = signal(true);
 
-  constructor(private itemService: ItemService,
-  _translateService: TranslateService
+  constructor(private itemService: ItemService
   ) {
     effect(() => {
-        _translateService.setDefaultLang('pl');
-        _translateService.use('pl');
-    this.getItems()});
+      this.getItems()});
   }
 
   getItems(): void {

@@ -4,6 +4,7 @@ import { Item } from 'src/app/models/item';
 import { RouterLink } from '@angular/router';
 import { AsyncPipe, NgForOf } from '@angular/common';
 import { ItemService } from 'src/app/services/item.service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-item-search',
@@ -11,7 +12,8 @@ import { ItemService } from 'src/app/services/item.service';
   imports: [
     RouterLink,
     AsyncPipe,
-    NgForOf
+    NgForOf,
+    TranslateModule
   ],
   templateUrl: './item-search.component.html',
   styleUrl: './item-search.component.css'
@@ -20,7 +22,9 @@ export class ItemSearchComponent implements OnInit {
   items$!: Observable<Item[]>;
   private searchTerms = new Subject<string>();
 
-  constructor(private itemService: ItemService) {}
+  constructor(
+    private itemService: ItemService
+  ) {}
 
   search(term: string): void {
     this.searchTerms.next(term);

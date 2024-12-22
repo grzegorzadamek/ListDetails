@@ -3,13 +3,15 @@ import { FormsModule } from '@angular/forms';
 import { Location, UpperCasePipe } from '@angular/common';
 import { ItemService } from 'src/app/services/item.service';
 import { signal, computed } from '@angular/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-item-add',
   standalone: true,
   imports: [
     FormsModule,
-    UpperCasePipe
+    UpperCasePipe,
+    TranslateModule
   ],
   templateUrl: './item-add.component.html',
   styleUrls: ['./item-add.component.css']
@@ -26,7 +28,8 @@ export class ItemAddComponent {
   constructor(
     private itemService: ItemService,
     private location: Location
-  ) {}
+  ) {
+  }
 
   goBack(): void {
     this.location.back();

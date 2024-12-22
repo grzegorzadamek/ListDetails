@@ -1,40 +1,40 @@
 <div class="detail-container">
   <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="detail-form">
-    <h2 class="form-title">Item Details</h2>
+    <h2 class="form-title">{{ 'itemDetail.itemDetail' | translate }}</h2>
 
     <div class="form-group">
-      <label for="firstName">First Name</label>
+      <label for="firstName">{{ 'itemDetail.firstName' | translate }}:</label>
       <input
         id="firstName"
         formControlName="firstName"
         class="form-input"
-        placeholder="Enter first name">
+        placeholder="{{ 'itemDetail.enterFirstName' | translate }}">
       @if (userForm.get('firstName')?.invalid && userForm.get('firstName')?.touched) {
-      <div class="error-message">First name is required</div>
+      <div class="error-message">{{ 'itemDetail.firstNameRequired' | translate }}</div>
       }
     </div>
 
     <div class="form-group">
-      <label for="lastName">Last Name</label>
+      <label for="lastName">{{ 'itemDetail.lastName' | translate }}:</label>
       <input
         id="lastName"
         formControlName="lastName"
         class="form-input"
-        placeholder="Enter last name">
+        placeholder="{{ 'itemDetail.enterLastName' | translate }}">
       @if (userForm.get('lastName')?.invalid && userForm.get('lastName')?.touched) {
-      <div class="error-message">Last name is required</div>
+      <div class="error-message">{{ 'itemDetail.lastNameRequired' | translate }}</div>
       }
     </div>
 
     <div class="form-group">
-      <label for="email">Email</label>
+      <label for="email">{{ 'itemDetail.email' | translate }}:</label>
       <input
         id="email"
         formControlName="email"
         class="form-input"
-        placeholder="Enter email">
+        placeholder="{{ 'itemDetail.enterEmail' | translate }}">
       @if (userForm.get('email')?.invalid && userForm.get('email')?.touched) {
-      <div class="error-message">Email is required</div>
+      <div class="error-message">{{ 'itemDetail.emailRequired' | translate }}</div>
       }
     </div>
 
@@ -45,10 +45,10 @@
 
     <div class="button-group">
       <button type="button" (click)="goBack()" class="btn btn-secondary">
-        <i class="fas fa-arrow-left"></i> Back
+        <i class="fas fa-arrow-left"></i> {{ 'button.back' | translate }}
       </button>
       <button type="submit" [disabled]="userForm.invalid || isLoading()" class="btn btn-primary">
-        <i class="fas fa-check"></i> Save Changes
+        <i class="fas fa-check"></i> {{ 'button.saveChanges' | translate }}
       </button>
     </div>
   </form>
@@ -56,7 +56,7 @@
   @if (isLoading()) {
   <div class="loading-overlay">
     <div class="loading-spinner"></div>
-    <span>Loading...</span>
+    <span>{{ 'loading' | translate }}</span>
   </div>
   }
 </div>

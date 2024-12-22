@@ -2,13 +2,13 @@
   <div class="search-header">
     <label for="search-box" class="search-label">
       <i class="fas fa-search"></i>
-      Item Search
+      {{ 'itemSearch.itemSearch' | translate }}
     </label>
     <input
       id="search-box"
       #searchBox
       (input)="search(searchBox.value)"
-      placeholder="Search items..."
+      placeholder="{{ 'itemSearch.searchPlaceholder' | translate }}"
       class="search-input"
     />
   </div>

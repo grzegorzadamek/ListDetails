@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { ItemSearchComponent } from './item-search.component';
-import { ItemService } from '../item.service';
+import { ItemService } from 'src/app/services/item.service';
 import { of } from 'rxjs';
-import { Item } from '../item';
+import { Item } from 'src/app/models/item';
 
 describe('ItemSearchComponent', () => {
   let component: ItemSearchComponent;

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ItemDetailComponent } from './item-detail.component';
-import { ItemService } from '../item.service';
+import { ItemService } from 'src/app/services/item.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormBuilder } from '@angular/forms';

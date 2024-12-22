@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { DashboardComponent } from './dashboard.component';
-import { ItemService } from '../item.service';
+import { ItemService } from 'src/app/services/item.service';
 import { of } from 'rxjs';
-import { Item } from '../item';
+import { Item } from 'src/app/models/item';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;

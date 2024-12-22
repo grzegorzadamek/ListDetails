@@ -1,10 +1,10 @@
 <section class="items-container">
-  <h2>My Items</h2>
+  <h2>{{ 'items.myItems' | translate }}</h2>
 
   <div class="actions">
     <button type="button" class="add-button" (click)="addItem()">
       <i class="fas fa-plus"></i>
-      Add item
+      {{ 'items.addItem' | translate }}
     </button>
   </div>
 
@@ -17,7 +17,7 @@
             <h3>{{item.lastName}}, {{item.firstName}}</h3>
             <div class="item-actions">
               <a class="details-button" routerLink="/detail/{{item.id}}">
-                Details
+                {{ 'items.details' | translate }}
                 <i class="fas fa-pen-to-square"></i>
               </a>
               <button type="button" class="delete-button" (click)="deleteItem(item)">
@@ -29,14 +29,14 @@
       } @empty {
         <div class="empty-state">
           <i class="fas fa-box-open"></i>
-          <p>You have no items!</p>
+          <p>{{ 'items.noItems' | translate }}</p>
         </div>
       }
     </div>
   } @else {
   <div class="loading-overlay">
     <div class="loading-spinner"></div>
-    <span>Loading...</span>
+    <span>{{ 'loading' | translate }}</span>
   </div>
   }
 </section>

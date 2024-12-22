@@ -1,9 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ItemsComponent } from './items.component';
-import { ItemService } from '../item.service';
+import { ItemService } from 'src/app/services/item.service';
 import { Router } from '@angular/router';
 import { of } from 'rxjs';
-import { Item } from '../item';
+import { Item } from 'src/app/models/item';
 
 describe('ItemsComponent', () => {
   let component: ItemsComponent;

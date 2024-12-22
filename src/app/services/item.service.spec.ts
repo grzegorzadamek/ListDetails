@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 import { ItemService } from './item.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { MessageService } from './message.service';
-import { Item } from './item';
+import { MessageService } from 'src/app/services/message.service';
+import { Item } from 'src/app/models/item';
 
 describe('ItemService', () => {
   let service: ItemService;

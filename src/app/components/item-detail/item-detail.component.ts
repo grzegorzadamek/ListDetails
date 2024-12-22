@@ -5,6 +5,7 @@ import { Item } from 'src/app/models/item';
 import { ActivatedRoute } from '@angular/router';
 import { ItemService } from 'src/app/services/item.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-item-detail',
@@ -12,7 +13,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   imports: [
     FormsModule,
     UpperCasePipe,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TranslateModule
   ],
   templateUrl: './item-detail.component.html',
   styleUrl: './item-detail.component.css'

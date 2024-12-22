@@ -1,12 +1,51 @@
 {
   "title": "Lista przedmiotów",
-  "items": "Przedmioty",
+  "loading": "Jeszcze chwilka...",
   "language": {
     "polish": "Polski",
     "english": "Angielski"
   },
+  "button": {
+    "back": "Wróć",
+    "save": "Zapisz",
+    "saveChanges": "Zapisz zmiany"
+  },
   "dashboard": {
     "title": "Dashboard",
-    "topItems": "Top 4 przedmiotów"
+    "topItems": "Top przedmioty"
+  },
+  "addNewItem": {
+    "addItem": "Dodaj przedmiot",
+    "firstName": "Imię",
+    "lastName": "Nazwisko",
+    "email": "Email",
+    "firstNameRequired": "Imię jest wymagane",
+    "lastNameRequired": "Nazwisko jest wymagane",
+    "enterFirstName": "Wpisz imię",
+    "enterLastName": "Wpisz nazwisko",
+    "enterEmail": "Wpisz email"
+  },
+  "itemDetail": {
+    "itemDetail": "Szczegóły przedmiotu",
+    "firstName": "Imię",
+    "lastName": "Nazwisko",
+    "email": "Email",
+    "firstNameRequired": "Imię jest wymagane",
+    "lastNameRequired": "Nazwisko jest wymagane",
+    "emailRequired": "Email jest wymagany",
+    "enterFirstName": "Wpisz imię",
+    "enterLastName": "Wpisz nazwisko",
+    "enterEmail": "Wpisz email"
+  },
+  "itemSearch": {
+    "itemSearch": "Szukaj przedmiotów",
+    "searchPlaceholder": "Wpisz nazwę przedmiotu"
+  },
+  "items": {
+    "title": "Przedmioty",
+    "myItems": "Moje przedmioty",
+    "details": "Szczegóły",
+    "noItems": "Brak przedmiotów",
+    "addItem": "Dodaj przedmiot"
   }
 }

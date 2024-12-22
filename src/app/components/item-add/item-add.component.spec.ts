@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ItemAddComponent } from './item-add.component';
-import { ItemService } from '../item.service';
+import { ItemService } from 'src/app/services/item.service';
 import { Location } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { of } from 'rxjs';

@@ -1,40 +1,40 @@
 <div class="item-details-container">
-  <h2>Add New Item</h2>
+  <h2>{{ 'addNewItem.addItem' | translate }}</h2>
   <form (ngSubmit)="onSubmit()" class="item-form">
     <div class="form-group">
-      <label for="firstName">First Name:</label>
+      <label for="firstName">{{ 'addNewItem.firstName' | translate }}:</label>
       <input
         id="firstName"
         [ngModel]="firstName()"
         (ngModelChange)="firstName.set($event)"
         name="firstName"
         class="form-control"
-        placeholder="Enter first name">
+        placeholder="{{ 'addNewItem.enterFirstName' | translate }}">
       @if (!isFirstNameValid()) {
       <div class="error-message">
-        Imię jest wymagane
+        {{ 'addNewItem.firstNameRequired' | translate }}
       </div>
       }
     </div>
 
     <div class="form-group">
-      <label for="lastName">Last Name:</label>
+      <label for="lastName">{{ 'addNewItem.lastName' | translate }}:</label>
       <input
         id="lastName"
         [ngModel]="lastName()"
         (ngModelChange)="lastName.set($event)"
         name="lastName"
         class="form-control"
-        placeholder="Enter last name">
+        placeholder="{{ 'addNewItem.enterLastName' | translate }}">
       @if (!isLastNameValid()) {
       <div class="error-message">
-        Nazwisko jest wymagane
+        {{ 'addNewItem.lastNameRequired' | translate }}
       </div>
       }
     </div>
 
     <div class="form-group">
-      <label for="email">Email:</label>
+      <label for="email">{{ 'addNewItem.email' | translate }}:</label>
       <input
         id="email"
         [ngModel]="email()"
@@ -42,15 +42,15 @@
         name="email"
         class="form-control"
         type="email"
-        placeholder="Enter email">
+        placeholder="{{ 'addNewItem.enterEmail' | translate }}">
     </div>
 
     <div class="button-group">
       <button type="button" (click)="goBack()" class="btn btn-secondary">
-        <i class="fas fa-arrow-left"></i> Back
+        <i class="fas fa-arrow-left"></i> {{ 'button.back' | translate }}
       </button>
       <button type="submit" [disabled]="!isFormValid()" class="btn btn-primary">
-        <i class="fa-solid fa-check"></i> Save
+        <i class="fa-solid fa-check"></i> {{ 'button.save' | translate }}
       </button>
     </div>
   </form>
