@@ -6,13 +6,14 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideTranslateModule } from './app/translate.config'; // Dodaj konfigurację tłumaczeń
 import { AppComponent } from './app/app.component';
 import { routes } from 'src/app/app.routes'; // Upewnij się, że masz konfigurację routingu
+import { appConfig } from 'src/app/app.config'; // Dodaj konfigurację aplikacji
 
-// Konfiguracja aplikacji
 bootstrapApplication(AppComponent, {
   providers: [
     provideHttpClient(),
     provideRouter(routes),
     provideAnimations(),
-    provideTranslateModule() // Dodaj konfigurację tłumaczeń
+    provideTranslateModule(),
+    ...appConfig.providers
   ]
 }).catch((err) => console.error(err));

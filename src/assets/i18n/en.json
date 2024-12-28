@@ -1,6 +1,7 @@
 {
   "title": "List of items",
   "loading": "Loading...",
+  "logout": "Logout",
   "language": {
     "polish": "Polish",
     "english": "English"
@@ -9,6 +10,11 @@
     "back": "Back",
     "save": "Save",
     "saveChanges": "Save changes"
+  },
+  "login": {
+    "welcome": "Welcome",
+    "dashboard": "Login to access your dashboard",
+    "signIn": "Sign in with"
   },
   "dashboard": {
     "title": "Dashboard",

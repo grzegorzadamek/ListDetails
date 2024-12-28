@@ -1,6 +1,7 @@
 {
   "title": "Lista przedmiotów",
   "loading": "Jeszcze chwilka...",
+  "logout": "Wyloguj się",
   "language": {
     "polish": "Polski",
     "english": "Angielski"
@@ -9,6 +10,11 @@
     "back": "Wróć",
     "save": "Zapisz",
     "saveChanges": "Zapisz zmiany"
+  },
+  "login": {
+    "welcome": "Witaj",
+    "dashboard": "Wejdź do dashboardu",
+    "signIn": "Zaloguj się"
   },
   "dashboard": {
     "title": "Dashboard",
