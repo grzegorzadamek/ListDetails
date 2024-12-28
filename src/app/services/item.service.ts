@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Item } from "src/app/models/item";
-import { catchError, Observable, of, tap } from "rxjs";
+import { catchError, Observable, of, tap, Subject, BehaviorSubject } from "rxjs";
 import { MessageService } from "./message.service";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 
@@ -8,25 +8,36 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
   providedIn: 'root'
 })
 export class ItemService {
-  private itemsUrl = 'https://node-listdetails.onrender.com/api/items';
-  private itemUrl = 'https://node-listdetails.onrender.com/api/item';
-  private addItemUrl = 'https://node-listdetails.onrender.com/api/item/add';
+//   private itemsUrl = 'https://node-listdetails.onrender.com/api/items';
+//   private itemUrl = 'https://node-listdetails.onrender.com/api/item';
+//   private addItemUrl = 'https://node-listdetails.onrender.com/api/item/add';
 
-//   private itemsUrl = 'http://localhost:3000/api/items';
-//   private itemUrl = 'http://localhost:3000/api/item';
-//   private addItemUrl = 'http://localhost:3000/api/item/add';
+  private itemsUrl = 'http://localhost:3000/api/items';
+  private itemUrl = 'http://localhost:3000/api/item';
+  private addItemUrl = 'http://localhost:3000/api/item/add';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
+
+//   private userEmail = new BehaviorSubject<string>('');
+//   userEmail$ = this.userEmail.asObservable();
+  private userEmail: string = '';
 
   constructor(
     private messageService: MessageService,
     private httpClient: HttpClient
   ) { }
 
+  setUser(data: string) {
+    this.userEmail = data;
+//     this.userEmail.next(data);
+  }
+
   getItems(): Observable<Item[]> {
-    return this.httpClient.get<Item[]>(this.itemsUrl, {
+    const body = { owner: this.userEmail };
+
+    return this.httpClient.post<Item[]>(this.itemsUrl, body, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         'X-Requested-With': 'XMLHttpRequest',
@@ -38,11 +49,14 @@ export class ItemService {
 
   getItem(id: number): Observable<Item> {
     const url = `${this.itemUrl}/${id}`;
-    return this.httpClient.get<Item>(url).pipe(
+    const body = { owner: this.userEmail };
+
+    return this.httpClient.post<Item>(url, body, this.httpOptions).pipe(
       tap(_ => this.log(`fetched item id=${id}`)),
       catchError(this.handleError<Item>(`getItem id=${id}`))
     );
   }
+
 
   updateItem(item: Item): Observable<any> {
     return this.httpClient.put(this.itemUrl, item, this.httpOptions).pipe(
@@ -51,8 +65,9 @@ export class ItemService {
     );
   }
 
-  addItem(item: { firstName: string, lastName: string }): Observable<{ firstName: string, lastName: string }> {
-    return this.httpClient.post<Item>(this.addItemUrl, item, this.httpOptions).pipe(
+  addItem(item: { name: string, description: string }): Observable<{ name: string, description: string }> {
+    const newItem = { name: item.name, description: item.description, owner: this.userEmail };
+    return this.httpClient.post<Item>(this.addItemUrl, newItem, this.httpOptions).pipe(
       tap((newItem: Item) => this.log(`added item w/ id=${newItem.id}`)),
       catchError(this.handleError<Item>('addItem'))
     );
@@ -67,13 +82,15 @@ export class ItemService {
   }
 
   searchItems(term: string): Observable<Item[]> {
+    const body = { owner: this.userEmail };
+
     if (!term.trim()) {
       return of([]);
     }
 
     const url = `${this.itemsUrl}/?query=${term}`;
 
-    return this.httpClient.get<Item[]>(url).pipe(
+    return this.httpClient.post<Item[]>(url, body).pipe(
       tap(items => items.length ?
         this.log(`found items matching "${term}"`) :
         this.log(`no items matching "${term}"`)),

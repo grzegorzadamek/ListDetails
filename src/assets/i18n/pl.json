@@ -22,26 +22,21 @@
   },
   "addNewItem": {
     "addItem": "Dodaj przedmiot",
-    "firstName": "Imię",
-    "lastName": "Nazwisko",
-    "email": "Email",
-    "firstNameRequired": "Imię jest wymagane",
-    "lastNameRequired": "Nazwisko jest wymagane",
-    "enterFirstName": "Wpisz imię",
-    "enterLastName": "Wpisz nazwisko",
-    "enterEmail": "Wpisz email"
+    "name": "Nazwa",
+    "description": "Opis",
+    "nameRequired": "Nazwa jest wymagana",
+    "descriptionRequired": "Opis jest wymagany",
+    "enterName": "Wpisz nazwę",
+    "enterDescription": "Wpisz opis"
   },
   "itemDetail": {
     "itemDetail": "Szczegóły przedmiotu",
-    "firstName": "Imię",
-    "lastName": "Nazwisko",
-    "email": "Email",
-    "firstNameRequired": "Imię jest wymagane",
-    "lastNameRequired": "Nazwisko jest wymagane",
-    "emailRequired": "Email jest wymagany",
-    "enterFirstName": "Wpisz imię",
-    "enterLastName": "Wpisz nazwisko",
-    "enterEmail": "Wpisz email"
+    "name": "Nazwa",
+    "description": "Opis",
+    "nameRequired": "Nazwa jest wymagana",
+    "descriptionRequired": "Opis jest wymagany",
+    "enterName": "Wpisz nazwę",
+    "enterDescription": "Wpisz opis"
   },
   "itemSearch": {
     "itemSearch": "Szukaj przedmiotów",

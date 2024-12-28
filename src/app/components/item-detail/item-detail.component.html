@@ -3,38 +3,26 @@
     <h2 class="form-title">{{ 'itemDetail.itemDetail' | translate }}</h2>
 
     <div class="form-group">
-      <label for="firstName">{{ 'itemDetail.firstName' | translate }}:</label>
+      <label for="name">{{ 'itemDetail.name' | translate }}:</label>
       <input
-        id="firstName"
-        formControlName="firstName"
+        id="name"
+        formControlName="name"
         class="form-input"
-        placeholder="{{ 'itemDetail.enterFirstName' | translate }}">
-      @if (userForm.get('firstName')?.invalid && userForm.get('firstName')?.touched) {
-      <div class="error-message">{{ 'itemDetail.firstNameRequired' | translate }}</div>
+        placeholder="{{ 'itemDetail.enterName' | translate }}">
+      @if (userForm.get('name')?.invalid && userForm.get('name')?.touched) {
+      <div class="error-message">{{ 'itemDetail.nameRequired' | translate }}</div>
       }
     </div>
 
     <div class="form-group">
-      <label for="lastName">{{ 'itemDetail.lastName' | translate }}:</label>
+      <label for="description">{{ 'itemDetail.description' | translate }}:</label>
       <input
-        id="lastName"
-        formControlName="lastName"
+        id="description"
+        formControlName="description"
         class="form-input"
-        placeholder="{{ 'itemDetail.enterLastName' | translate }}">
-      @if (userForm.get('lastName')?.invalid && userForm.get('lastName')?.touched) {
-      <div class="error-message">{{ 'itemDetail.lastNameRequired' | translate }}</div>
-      }
-    </div>
-
-    <div class="form-group">
-      <label for="email">{{ 'itemDetail.email' | translate }}:</label>
-      <input
-        id="email"
-        formControlName="email"
-        class="form-input"
-        placeholder="{{ 'itemDetail.enterEmail' | translate }}">
-      @if (userForm.get('email')?.invalid && userForm.get('email')?.touched) {
-      <div class="error-message">{{ 'itemDetail.emailRequired' | translate }}</div>
+        placeholder="{{ 'itemDetail.enterDescription' | translate }}">
+      @if (userForm.get('description')?.invalid && userForm.get('description')?.touched) {
+      <div class="error-message">{{ 'itemDetail.descriptionRequired' | translate }}</div>
       }
     </div>
 

@@ -2,47 +2,35 @@
   <h2>{{ 'addNewItem.addItem' | translate }}</h2>
   <form (ngSubmit)="onSubmit()" class="item-form">
     <div class="form-group">
-      <label for="firstName">{{ 'addNewItem.firstName' | translate }}:</label>
+      <label for="name">{{ 'addNewItem.name' | translate }}:</label>
       <input
-        id="firstName"
-        [ngModel]="firstName()"
-        (ngModelChange)="firstName.set($event)"
-        name="firstName"
+        id="name"
+        [ngModel]="name()"
+        (ngModelChange)="name.set($event)"
+        name="name"
         class="form-control"
-        placeholder="{{ 'addNewItem.enterFirstName' | translate }}">
-      @if (!isFirstNameValid()) {
+        placeholder="{{ 'addNewItem.enterName' | translate }}">
+      @if (!isNameValid()) {
       <div class="error-message">
-        {{ 'addNewItem.firstNameRequired' | translate }}
+        {{ 'addNewItem.nameRequired' | translate }}
       </div>
       }
     </div>
 
     <div class="form-group">
-      <label for="lastName">{{ 'addNewItem.lastName' | translate }}:</label>
+      <label for="description">{{ 'addNewItem.description' | translate }}:</label>
       <input
-        id="lastName"
-        [ngModel]="lastName()"
-        (ngModelChange)="lastName.set($event)"
-        name="lastName"
+        id="description"
+        [ngModel]="description()"
+        (ngModelChange)="description.set($event)"
+        name="description"
         class="form-control"
-        placeholder="{{ 'addNewItem.enterLastName' | translate }}">
-      @if (!isLastNameValid()) {
+        placeholder="{{ 'addNewItem.enterDescription' | translate }}">
+      @if (!isDescriptionValid()) {
       <div class="error-message">
-        {{ 'addNewItem.lastNameRequired' | translate }}
+        {{ 'addNewItem.descriptionRequired' | translate }}
       </div>
       }
-    </div>
-
-    <div class="form-group">
-      <label for="email">{{ 'addNewItem.email' | translate }}:</label>
-      <input
-        id="email"
-        [ngModel]="email()"
-        (ngModelChange)="email.set($event)"
-        name="email"
-        class="form-control"
-        type="email"
-        placeholder="{{ 'addNewItem.enterEmail' | translate }}">
     </div>
 
     <div class="button-group">

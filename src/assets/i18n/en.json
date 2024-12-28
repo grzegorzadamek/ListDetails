@@ -22,26 +22,21 @@
   },
   "addNewItem": {
     "addItem": "Add item",
-    "firstName": "First name",
-    "lastName": "Last name",
-    "email": "Email",
-    "firstNameRequired": "First name is required",
-    "lastNameRequired": "Last name is required",
-    "enterFirstName": "Enter first name",
-    "enterLastName": "Enter last name",
-    "enterEmail": "Enter email"
+    "name": "Name",
+    "description": "Description",
+    "nameRequired": "Name is required",
+    "descriptionRequired": "Description is required",
+    "enterName": "Enter name",
+    "enterDescription": "Enter description"
   },
   "itemDetail": {
     "itemDetail": "Item detail",
-    "firstName": "First name",
-    "lastName": "Last name",
-    "email": "Email",
-    "firstNameRequired": "First name is required",
-    "lastNameRequired": "Last name is required",
-    "emailRequired": "Email is required",
-    "enterFirstName": "Enter first name",
-    "enterLastName": "Enter last name",
-    "enterEmail": "Enter email"
+    "name": "name",
+    "description": "Description",
+    "nameRequired": "Name is required",
+    "descriptionRequired": "Description is required",
+    "enterName": "Enter name",
+    "enterDescription": "Enter description"
   },
   "itemSearch": {
     "itemSearch": "Item search",

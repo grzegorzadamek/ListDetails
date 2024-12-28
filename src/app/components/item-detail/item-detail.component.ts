@@ -31,9 +31,8 @@ export class ItemDetailComponent {
   ) {
     this.userForm = this.fb.group({
       id: [''],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      email: ['', Validators.required],
+      name: ['', Validators.required],
+      description: ['', Validators.required]
     });
     effect(() => this.getItem());
   }
@@ -47,9 +46,8 @@ export class ItemDetailComponent {
           this.isLoading.set(false);
           this.userForm.enable();
           this.userForm.patchValue({
-            firstName: item.firstName,
-            lastName: item.lastName,
-            email: item.email,
+            name: item.name,
+            description: item.description,
             id: item.id
           });
         }
@@ -65,9 +63,8 @@ export class ItemDetailComponent {
     if (this.userForm.valid) {
       const item: Item = {
         id: this.userForm.get('id')?.value ?? 0,
-        firstName: this.userForm.get('firstName')?.value ?? '',
-        lastName: this.userForm.get('lastName')?.value ?? '',
-        email: this.userForm.get('email')?.value ?? ''
+        name: this.userForm.get('name')?.value ?? '',
+        description: this.userForm.get('description')?.value ?? '',
       };
 
       this.itemService.updateItem(item)

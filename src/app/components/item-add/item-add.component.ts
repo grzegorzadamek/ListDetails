@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { Location, UpperCasePipe } from '@angular/common';
 import { ItemService } from 'src/app/services/item.service';
 import { signal, computed } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -17,19 +18,17 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
   styleUrls: ['./item-add.component.css']
 })
 export class ItemAddComponent {
-  firstName = signal('');
-  lastName = signal('');
-  email = signal('');
+  name = signal('');
+  description = signal('');
 
-  isFirstNameValid = computed(() => this.firstName().trim().length >= 2 && this.firstName().trim().length <= 50);
-  isLastNameValid = computed(() => this.lastName().trim().length >= 2 && this.lastName().trim().length <= 50);
-  isFormValid = computed(() => this.isFirstNameValid() || this.isLastNameValid());
+  isNameValid = computed(() => this.name().trim().length >= 2 && this.name().trim().length <= 50);
+  isDescriptionValid = computed(() => this.description().trim().length >= 2 && this.description().trim().length <= 50);
+  isFormValid = computed(() => this.isNameValid() || this.isDescriptionValid());
 
   constructor(
     private itemService: ItemService,
     private location: Location
-  ) {
-  }
+  ) {}
 
   goBack(): void {
     this.location.back();
@@ -38,9 +37,8 @@ export class ItemAddComponent {
   onSubmit(): void {
     if (this.isFormValid()) {
       const item = {
-        firstName: this.firstName(),
-        lastName: this.lastName(),
-        email: this.email()
+        name: this.name(),
+        description: this.description()
       };
 
       this.itemService.addItem(item)
@@ -48,15 +46,11 @@ export class ItemAddComponent {
     }
   }
 
-  updateFirstName(value: string): void {
-    this.firstName.set(value);
+  updateName(value: string): void {
+    this.name.set(value);
   }
 
-  updateLastName(value: string): void {
-    this.lastName.set(value);
-  }
-
-  updateEmail(value: string): void {
-    this.email.set(value);
+  updateDescription(value: string): void {
+    this.description.set(value);
   }
 }
