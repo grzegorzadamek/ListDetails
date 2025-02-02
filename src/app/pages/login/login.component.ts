@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SocialAuthService, GoogleLoginProvider, SocialUser } from '@abacritt/angularx-social-login';
+import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { SocialLoginModule, GoogleSigninButtonModule } from '@abacritt/angularx-social-login';

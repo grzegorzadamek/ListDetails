@@ -1,18 +1,17 @@
 import { Component, signal, effect } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // <-- NgModel lives here
-import { Location, UpperCasePipe } from '@angular/common';
+import { Location } from '@angular/common';
 import { Item } from 'src/app/models/item';
 import { ActivatedRoute } from '@angular/router';
 import { ItemService } from 'src/app/services/item.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-item-detail',
   standalone: true,
   imports: [
     FormsModule,
-    UpperCasePipe,
     ReactiveFormsModule,
     TranslateModule
   ],

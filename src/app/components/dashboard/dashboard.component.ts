@@ -3,7 +3,7 @@ import { Item } from "src/app/models/item";
 import { ItemService } from "src/app/services/item.service";
 import { RouterLink } from "@angular/router";
 import { ItemSearchComponent } from "src/app/components/item-search/item-search.component";
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-dashboard',

@@ -1,15 +1,13 @@
 import { Component, signal, computed, effect } from '@angular/core';
-import { NgFor } from "@angular/common";
 import { Item } from "src/app/models/item";
 import { ItemService } from "src/app/services/item.service";
 import { Router, RouterLink } from "@angular/router";
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-items',
   standalone: true,
   imports: [
-    NgFor,
     RouterLink,
     TranslateModule
   ],

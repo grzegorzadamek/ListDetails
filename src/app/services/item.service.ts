@@ -8,20 +8,18 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
   providedIn: 'root'
 })
 export class ItemService {
-//   private itemsUrl = 'https://node-listdetails.onrender.com/api/items';
-//   private itemUrl = 'https://node-listdetails.onrender.com/api/item';
-//   private addItemUrl = 'https://node-listdetails.onrender.com/api/item/add';
+  private itemsUrl = 'https://node-listdetails.onrender.com/api/items';
+  private itemUrl = 'https://node-listdetails.onrender.com/api/item';
+  private addItemUrl = 'https://node-listdetails.onrender.com/api/item/add';
 
-  private itemsUrl = 'http://localhost:3000/api/items';
-  private itemUrl = 'http://localhost:3000/api/item';
-  private addItemUrl = 'http://localhost:3000/api/item/add';
+//   private itemsUrl = 'http://localhost:3000/api/items';
+//   private itemUrl = 'http://localhost:3000/api/item';
+//   private addItemUrl = 'http://localhost:3000/api/item/add';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-//   private userEmail = new BehaviorSubject<string>('');
-//   userEmail$ = this.userEmail.asObservable();
   private userEmail: string = '';
 
   constructor(
@@ -31,7 +29,6 @@ export class ItemService {
 
   setUser(data: string) {
     this.userEmail = data;
-//     this.userEmail.next(data);
   }
 
   getItems(): Observable<Item[]> {

@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { debounceTime, distinctUntilChanged, Observable, Subject, switchMap } from 'rxjs';
 import { Item } from 'src/app/models/item';
 import { RouterLink } from '@angular/router';
-import { AsyncPipe, NgForOf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { ItemService } from 'src/app/services/item.service';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-item-search',
@@ -12,7 +12,6 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
   imports: [
     RouterLink,
     AsyncPipe,
-    NgForOf,
     TranslateModule
   ],
   templateUrl: './item-search.component.html',
