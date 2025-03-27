@@ -12,9 +12,9 @@ describe('ItemsComponent', () => {
   let mockRouter: jasmine.SpyObj<Router>;
 
   const mockItems: Item[] = [
-    { id: 1, firstName: 'Item 1', lastName: 'last 1', email: 'mail 1' },
-    { id: 2, firstName: 'Item 2', lastName: 'last 2', email: 'mail 2' },
-    { id: 3, firstName: 'Item 3', lastName: 'last 3', email: 'mail 3' }
+    { id: 1, name: 'Item 1', description: 'last 1' },
+    { id: 2, name: 'Item 2', description: 'last 2' },
+    { id: 3, name: 'Item 3', description: 'last 3' }
   ];
 
   beforeEach(async () => {
@@ -22,7 +22,7 @@ describe('ItemsComponent', () => {
     mockRouter = jasmine.createSpyObj('Router', ['navigateByUrl']);
 
     mockItemService.getItems.and.returnValue(of(mockItems));
-    const deletedItem: Item = { id: 1, firstName: 'Deleted', lastName: 'Item', email: 'deleted@test.com' };
+    const deletedItem: Item = { id: 1, name: 'Deleted', description: 'Item' };
     mockItemService.deleteItem.and.returnValue(of(deletedItem));
 
 

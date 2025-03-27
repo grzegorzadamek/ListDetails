@@ -22,8 +22,22 @@ describe('ItemDetailComponent', () => {
   beforeEach(async () => {
     mockItemService = jasmine.createSpyObj('ItemService', ['getItem', 'updateItem']);
     mockLocation = jasmine.createSpyObj('Location', ['back']);
-    mockItemService.getItem.and.returnValue(of(mockItem));
-    mockItemService.updateItem.and.returnValue(of(mockItem));
+    mockItemService.getItem.and.returnValue(of({
+      id: 1,
+      firstName: 'John',
+      lastName: 'Doe',
+      email: 'john@example.com',
+      name: '',
+      description: ''
+    }));
+    mockItemService.updateItem.and.returnValue(of({
+      id: 1,
+      firstName: 'John',
+      lastName: 'Doe',
+      email: 'john@example.com',
+      name: '',
+      description: ''
+    }));
 
     await TestBed.configureTestingModule({
       imports: [ItemDetailComponent],
@@ -48,7 +62,6 @@ describe('ItemDetailComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
   it('should create', () => {
     expect(component).toBeTruthy();
   });

@@ -10,11 +10,11 @@ describe('DashboardComponent', () => {
   let mockItemService: jasmine.SpyObj<ItemService>;
 
   const mockItems: Item[] = [
-    { id: 1, firstName: 'Item 1', lastName: ' last 1', email: 'mail 1' },
-    { id: 2, firstName: 'Item 2', lastName: ' last 2', email: 'mail 2' },
-    { id: 3, firstName: 'Item 3', lastName: ' last 3', email: 'mail 3' },
-    { id: 4, firstName: 'Item 4', lastName: ' last 4', email: 'mail 4' },
-    { id: 5, firstName: 'Item 5', lastName: ' last 5', email: 'mail 5' }
+    { id: 1, name: 'Item 1', description: ' last 1' },
+    { id: 2, name: 'Item 2', description: ' last 2' },
+    { id: 3, name: 'Item 3', description: ' last 3' },
+    { id: 4, name: 'Item 4', description: ' last 4' },
+    { id: 5, name: 'Item 5', description: ' last 5' }
   ];
 
   beforeEach(async () => {

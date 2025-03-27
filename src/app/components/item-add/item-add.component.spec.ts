@@ -33,41 +33,39 @@ describe('ItemAddComponent', () => {
   });
 
   it('should validate first name correctly', () => {
-    component.updateFirstName('');
-    expect(component.isFirstNameValid()).toBeFalse();
+    component.updateName('');
+    expect(component.isNameValid()).toBeFalse();
 
-    component.updateFirstName('A');
-    expect(component.isFirstNameValid()).toBeFalse();
+    component.updateName('A');
+    expect(component.isNameValid()).toBeFalse();
 
-    component.updateFirstName('John');
-    expect(component.isFirstNameValid()).toBeTrue();
+    component.updateName('John');
+    expect(component.isNameValid()).toBeTrue();
 
-    component.updateFirstName('A'.repeat(51));
-    expect(component.isFirstNameValid()).toBeFalse();
+    component.updateName('A'.repeat(51));
+    expect(component.isNameValid()).toBeFalse();
   });
 
   it('should validate last name correctly', () => {
-    component.updateLastName('');
-    expect(component.isLastNameValid()).toBeFalse();
+    component.updateName('');
+    expect(component.isNameValid()).toBeFalse();
 
-    component.updateLastName('B');
-    expect(component.isLastNameValid()).toBeFalse();
+    component.updateName('B');
+    expect(component.isNameValid()).toBeFalse();
 
-    component.updateLastName('Smith');
-    expect(component.isLastNameValid()).toBeTrue();
+    component.updateName('Smith');
+    expect(component.isNameValid()).toBeTrue();
 
-    component.updateLastName('B'.repeat(51));
-    expect(component.isLastNameValid()).toBeFalse();
+    component.updateName('B'.repeat(51));
+    expect(component.isNameValid()).toBeFalse();
   });
 
   it('should update form values correctly', () => {
-    component.updateFirstName('John');
-    component.updateLastName('Doe');
-    component.updateEmail('john@example.com');
+    component.updateName('John');
+    component.updateDescription('Doe');
 
-    expect(component.firstName()).toBe('John');
-    expect(component.lastName()).toBe('Doe');
-    expect(component.email()).toBe('john@example.com');
+    expect(component.name()).toBe('John');
+    expect(component.description()).toBe('Doe');
   });
 
   it('should call location.back when goBack is called', () => {
@@ -76,22 +74,20 @@ describe('ItemAddComponent', () => {
   });
 
   it('should submit form when valid', () => {
-    component.updateFirstName('John');
-    component.updateLastName('Doe');
-    component.updateEmail('john@example.com');
+    component.updateName('John');
+    component.updateDescription('Doe');
 
     component.onSubmit();
 
     expect(mockItemService.addItem).toHaveBeenCalledWith({
-      firstName: 'John',
-      lastName: 'Doe'
+      name: 'John',
+      description: 'Doe'
     });
   });
 
   it('should not submit form when invalid', () => {
-    component.updateFirstName('');
-    component.updateLastName('');
-    component.updateEmail('test@email.com');
+    component.updateName('');
+    component.updateDescription('');
 
     component.onSubmit();
 

@@ -10,8 +10,8 @@ describe('ItemSearchComponent', () => {
   let mockItemService: jasmine.SpyObj<ItemService>;
 
   const mockItems: Item[] = [
-    { id: 1, firstName: 'Item A', lastName: ' last 1', email: 'mail 1' },
-    { id: 2, firstName: 'Item B', lastName: ' last 2', email: 'mail 2' }
+    { id: 1, name: 'Item A', description: ' last 1' },
+    { id: 2, name: 'Item B', description: ' last 2'}
   ];
 
   beforeEach(async () => {
