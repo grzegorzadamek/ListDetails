@@ -12,18 +12,17 @@ import {
 import { ItemService } from 'src/app/services/item.service';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [
-    CommonModule,
-    RouterOutlet,
-    RouterLink,
-    TranslateModule,
-    SocialLoginModule,
-    GoogleSigninButtonModule
-  ],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+    selector: 'app-root',
+    imports: [
+        CommonModule,
+        RouterOutlet,
+        RouterLink,
+        TranslateModule,
+        SocialLoginModule,
+        GoogleSigninButtonModule
+    ],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css'
 })
 export class AppComponent {
   user: SocialUser | null = null;

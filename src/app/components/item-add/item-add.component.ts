@@ -6,14 +6,13 @@ import { signal, computed } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-item-add',
-  standalone: true,
-  imports: [
-    FormsModule,
-    TranslateModule
-  ],
-  templateUrl: './item-add.component.html',
-  styleUrls: ['./item-add.component.css']
+    selector: 'app-item-add',
+    imports: [
+        FormsModule,
+        TranslateModule
+    ],
+    templateUrl: './item-add.component.html',
+    styleUrls: ['./item-add.component.css']
 })
 export class ItemAddComponent {
   name = signal('');

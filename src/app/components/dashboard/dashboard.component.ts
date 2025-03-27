@@ -6,15 +6,14 @@ import { ItemSearchComponent } from "src/app/components/item-search/item-search.
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-dashboard',
-  standalone: true,
-  imports: [
-    RouterLink,
-    ItemSearchComponent,
-    TranslateModule
-  ],
-  templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.css'
+    selector: 'app-dashboard',
+    imports: [
+        RouterLink,
+        ItemSearchComponent,
+        TranslateModule
+    ],
+    templateUrl: './dashboard.component.html',
+    styleUrl: './dashboard.component.css'
 })
 
 export class DashboardComponent {

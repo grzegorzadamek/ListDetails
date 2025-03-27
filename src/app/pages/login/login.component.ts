@@ -6,11 +6,10 @@ import { SocialLoginModule, GoogleSigninButtonModule } from '@abacritt/angularx-
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
-  standalone: true,
-  imports: [CommonModule, SocialLoginModule, GoogleSigninButtonModule, TranslateModule]
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.css'],
+    imports: [CommonModule, SocialLoginModule, GoogleSigninButtonModule, TranslateModule]
 })
 export class LoginComponent {
   user: SocialUser | null = null;

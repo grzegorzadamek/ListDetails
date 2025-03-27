@@ -8,15 +8,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-item-detail',
-  standalone: true,
-  imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    TranslateModule
-  ],
-  templateUrl: './item-detail.component.html',
-  styleUrl: './item-detail.component.css'
+    selector: 'app-item-detail',
+    imports: [
+        FormsModule,
+        ReactiveFormsModule,
+        TranslateModule
+    ],
+    templateUrl: './item-detail.component.html',
+    styleUrl: './item-detail.component.css'
 })
 export class ItemDetailComponent {
   public userForm!: FormGroup;

@@ -7,15 +7,14 @@ import { ItemService } from 'src/app/services/item.service';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-item-search',
-  standalone: true,
-  imports: [
-    RouterLink,
-    AsyncPipe,
-    TranslateModule
-  ],
-  templateUrl: './item-search.component.html',
-  styleUrl: './item-search.component.css'
+    selector: 'app-item-search',
+    imports: [
+        RouterLink,
+        AsyncPipe,
+        TranslateModule
+    ],
+    templateUrl: './item-search.component.html',
+    styleUrl: './item-search.component.css'
 })
 export class ItemSearchComponent implements OnInit {
   items$!: Observable<Item[]>;

@@ -5,14 +5,13 @@ import { Router, RouterLink } from "@angular/router";
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-items',
-  standalone: true,
-  imports: [
-    RouterLink,
-    TranslateModule
-  ],
-  templateUrl: './items.component.html',
-  styleUrl: './items.component.css'
+    selector: 'app-items',
+    imports: [
+        RouterLink,
+        TranslateModule
+    ],
+    templateUrl: './items.component.html',
+    styleUrl: './items.component.css'
 })
 export class ItemsComponent {
   items = signal<Item[]>([]);
