@@ -12,15 +12,12 @@
       class="search-input"
     />
   </div>
-
   <ul class="search-results">
-    @for (item of items$ | async; track item.id) {
+    @for (item of items(); track item.id) {
       <li class="result-item">
         <a routerLink="/detail/{{item.id}}" class="item-link">
           <div class="item-card">
-            <div class="item-avatar">
-              {{item.name.charAt(0)}}
-            </div>
+            <div class="item-avatar">{{item.name.charAt(0)}}</div>
             <div class="item-info">
               <span class="item-name">{{item.name}}</span>
               <span class="item-id">#{{item.id}}</span>

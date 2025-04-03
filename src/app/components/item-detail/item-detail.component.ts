@@ -1,5 +1,5 @@
-import { Component, signal, effect } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'; // <-- NgModel lives here
+import { Component, signal, effect, inject } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Item } from 'src/app/models/item';
 import { ActivatedRoute } from '@angular/router';
@@ -8,36 +8,40 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-    selector: 'app-item-detail',
-    imports: [
-        FormsModule,
-        ReactiveFormsModule,
-        TranslateModule
-    ],
-    templateUrl: './item-detail.component.html',
-    styleUrl: './item-detail.component.css'
+  selector: 'app-item-detail',
+  standalone: true,
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    TranslateModule
+  ],
+  templateUrl: './item-detail.component.html',
+  styleUrl: './item-detail.component.css'
 })
 export class ItemDetailComponent {
-  public userForm!: FormGroup;
-  public isLoading = signal(true);
+  private route = inject(ActivatedRoute);
+  private itemService = inject(ItemService);
+  private location = inject(Location);
+  private fb = inject(FormBuilder);
 
-  constructor(
-    private route: ActivatedRoute,
-    private itemService: ItemService,
-    private location: Location,
-    private fb: FormBuilder
-  ) {
+  userForm: FormGroup;
+  isLoading = signal(true);
+
+  constructor() {
     this.userForm = this.fb.group({
       id: [''],
       name: ['', Validators.required],
       description: ['', Validators.required]
     });
+    
+    // Create the effect exactly as in the original code
     effect(() => this.getItem());
   }
 
   getItem(): void {
     this.userForm.disable();
     const id = Number(this.route.snapshot.paramMap.get('id'));
+    
     this.itemService.getItem(id).subscribe({
       next: (item) => {
         if (item) {
@@ -49,6 +53,11 @@ export class ItemDetailComponent {
             id: item.id
           });
         }
+      },
+      error: (err) => {
+        console.error('Error fetching item:', err);
+        this.isLoading.set(false);
+        this.userForm.enable();
       }
     });
   }
@@ -64,11 +73,11 @@ export class ItemDetailComponent {
         name: this.userForm.get('name')?.value ?? '',
         description: this.userForm.get('description')?.value ?? '',
       };
-
-      this.itemService.updateItem(item)
-        .subscribe({
-          next: () => this.goBack()
-        });
+      
+      this.itemService.updateItem(item).subscribe({
+        next: () => this.goBack(),
+        error: (err) => console.error('Error updating item:', err)
+      });
     }
   }
 }
