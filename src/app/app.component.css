@@ -2,18 +2,21 @@
 h1 {
   margin-bottom: 0;
 }
+
 .app-header {
   background: #2c3e50;
   padding: 1rem;
   color: white;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-
+  
   .header-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
   }
-
+  
   h1 {
     color: #d5e6f7;
     font-size: 2.3rem;
@@ -24,6 +27,8 @@ h1 {
   display: flex;
   gap: 1.5rem;
   margin-top: 1rem;
+  flex-wrap: wrap;
+  overflow-x: auto;
 }
 
 .navigation a {
@@ -35,6 +40,7 @@ h1 {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  white-space: nowrap;
 }
 
 .navigation a:hover {
@@ -53,6 +59,8 @@ h1 {
   padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .app-footer {
@@ -63,53 +71,45 @@ h1 {
 }
 
 .language-switcher button {
-  background-color: #007bff; /* Niebieski */
-  color: white; /* Biały tekst */
-  border: none; /* Brak obramowania */
-  padding: 10px 20px; /* Wewnętrzne marginesy */
-  margin: 5px; /* Marginesy między przyciskami */
-  border-radius: 5px; /* Zaokrąglone rogi */
-  cursor: pointer; /* Kursor wskazujący */
-  font-size: 16px; /* Rozmiar tekstu */
-  transition: background-color 0.3s ease; /* Płynne przejście koloru */
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
 }
 
-/* Efekt hover dla przycisków */
 .language-switcher button:hover {
-  background-color: #0056b3; /* Ciemniejszy niebieski */
+  background-color: #0056b3;
 }
 
-/* Aktywny przycisk (jeśli potrzebujesz) */
 .language-switcher button.active {
-  background-color: #28a745; /* Zielony */
+  background-color: #28a745;
 }
 
 .language-switcher select {
-  background-color: #3498db; /* Niebieski */
-  color: white; /* Biały tekst */
-  border: none; /* Brak obramowania */
-  padding: 8px 12px; /* Wewnętrzne marginesy */
-  border-radius: 4px; /* Zaokrąglone rogi */
-  cursor: pointer; /* Kursor wskazujący */
-  font-size: 16px; /* Rozmiar tekstu */
-  transition: background-color 0.3s ease; /* Płynne przejście koloru */
-  outline: none; /* Brak podświetlenia po kliknięciu */
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  outline: none;
+  max-width: 100%;
 }
 
-/* Efekt hover dla listy rozwijanej */
 .language-switcher select:hover {
-  background-color: #2980b9; /* Ciemniejszy niebieski */
+  background-color: #2980b9;
 }
 
-/* Styl dla opcji w liście rozwijanej */
 .language-switcher select option {
-  background-color: #3498db; /* Tło opcji */
-  color: white; /* Kolor tekstu opcji */
-}
-
-/* Pozycjonowanie listy rozwijanej po prawej stronie */
-.language-switcher {
-
+  background-color: #3498db;
+  color: white;
 }
 
 .header-right {
@@ -142,4 +142,104 @@ h1 {
   font-size: 0.7rem;
 }
 
+/* Media queries dla responsywności */
+@media (max-width: 768px) {
+  .app-header .header-content {
+    flex-direction: column-reverse; /* Zmiana kolejności elementów */
+  }
+  
+  .header-right {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end; /* Wyrównanie do prawej */
+    width: 100%;
+    margin-bottom: 1rem; /* Dodanie odstępu pod przyciskami */
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+    margin-top: 0.5rem; /* Dodanie odstępu nad tytułem */
+    align-self: flex-start; /* Wyrównanie tytułu do lewej */
+  }
+  
+  .navigation {
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .content {
+    padding: 1rem;
+  }
+}
 
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  
+  .navigation a {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .icon {
+    font-size: 1rem;
+  }
+  
+  .language-switcher select {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+  
+  .logout-button {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+  
+  .app-header {
+    padding: 0.75rem;
+  }
+  
+  .content {
+    padding: 0.75rem;
+  }
+  
+  .app-footer {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .header-right {
+    gap: 0.75rem; /* Zwiększenie odstępu między przyciskami */
+  }
+  
+  .navigation {
+    gap: 0.5rem;
+  }
+  
+  .navigation a {
+    padding: 0.4rem;
+  }
+  
+  .navigation a .nav-text {
+    display: none;
+  }
+  
+  .icon {
+    font-size: 1.2rem;
+  }
+  
+  .logout-button .button-text {
+    display: none;
+  }
+  
+  .logout-button {
+    padding: 6px;
+  }
+  
+  .logout-button .icon {
+    font-size: 1rem;
+  }
+}

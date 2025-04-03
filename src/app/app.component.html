@@ -11,7 +11,7 @@
         </div>
         <button class="logout-button" (click)="signOut()">
           <i class="fas fa-sign-out"></i>
-          {{ 'logout' | translate }}
+          <span class="button-text">{{ 'logout' | translate }}</span>
         </button>
       </div>
     </div>
@@ -19,11 +19,11 @@
     <nav class="navigation">
       <a routerLink="/dashboard" routerLinkActive="active">
         <span class="icon">🏠</span>
-        {{ 'dashboard.title' | translate }}
+        <span class="nav-text">{{ 'dashboard.title' | translate }}</span>
       </a>
       <a routerLink="/items" routerLinkActive="active">
         <span class="icon">📦</span>
-        {{ 'items.title' | translate }}
+        <span class="nav-text">{{ 'items.title' | translate }}</span>
       </a>
     </nav>
   </header>
