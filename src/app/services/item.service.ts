@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Item } from "src/app/models/item";
-import { catchError, Observable, of, tap, Subject, BehaviorSubject } from "rxjs";
+import { catchError, Observable, of, tap } from "rxjs";
 import { MessageService } from "./message.service";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { signal, WritableSignal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -12,27 +13,23 @@ export class ItemService {
   private itemUrl = 'https://node-listdetails.onrender.com/api/item';
   private addItemUrl = 'https://node-listdetails.onrender.com/api/item/add';
 
-//   private itemsUrl = 'http://localhost:3000/api/items';
-//   private itemUrl = 'http://localhost:3000/api/item';
-//   private addItemUrl = 'http://localhost:3000/api/item/add';
+  // Using signals for state management
+  private userEmailSignal: WritableSignal<string> = signal('');
+  
+  // Using inject() instead of constructor injection
+  private messageService = inject(MessageService);
+  private httpClient = inject(HttpClient);
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  private userEmail: string = '';
-
-  constructor(
-    private messageService: MessageService,
-    private httpClient: HttpClient
-  ) { }
-
-  setUser(data: string) {
-    this.userEmail = data;
+  setUser(data: string): void {
+    this.userEmailSignal.set(data);
   }
 
   getItems(): Observable<Item[]> {
-    const body = { owner: this.userEmail };
+    const body = { owner: this.userEmailSignal() };
 
     return this.httpClient.post<Item[]>(this.itemsUrl, body, {
       headers: new HttpHeaders({
@@ -46,14 +43,13 @@ export class ItemService {
 
   getItem(id: number): Observable<Item> {
     const url = `${this.itemUrl}/${id}`;
-    const body = { owner: this.userEmail };
+    const body = { owner: this.userEmailSignal() };
 
     return this.httpClient.post<Item>(url, body, this.httpOptions).pipe(
       tap(_ => this.log(`fetched item id=${id}`)),
       catchError(this.handleError<Item>(`getItem id=${id}`))
     );
   }
-
 
   updateItem(item: Item): Observable<any> {
     return this.httpClient.put(this.itemUrl, item, this.httpOptions).pipe(
@@ -63,7 +59,12 @@ export class ItemService {
   }
 
   addItem(item: { name: string, description: string }): Observable<{ name: string, description: string }> {
-    const newItem = { name: item.name, description: item.description, owner: this.userEmail };
+    const newItem = { 
+      name: item.name, 
+      description: item.description, 
+      owner: this.userEmailSignal() 
+    };
+    
     return this.httpClient.post<Item>(this.addItemUrl, newItem, this.httpOptions).pipe(
       tap((newItem: Item) => this.log(`added item w/ id=${newItem.id}`)),
       catchError(this.handleError<Item>('addItem'))
@@ -79,7 +80,7 @@ export class ItemService {
   }
 
   searchItems(term: string): Observable<Item[]> {
-    const body = { owner: this.userEmail };
+    const body = { owner: this.userEmailSignal() };
 
     if (!term.trim()) {
       return of([]);

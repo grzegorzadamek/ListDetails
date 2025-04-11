@@ -1,4 +1,4 @@
-import { Component, signal, computed, inject } from '@angular/core';
+import { Component, signal, computed, inject, effect, DestroyRef } from '@angular/core';
 import { Item } from "src/app/models/item";
 import { ItemService } from "src/app/services/item.service";
 import { Router, RouterLink } from "@angular/router";
@@ -8,16 +8,14 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 @Component({
   selector: 'app-items',
   standalone: true,
-  imports: [
-    RouterLink,
-    TranslateModule
-  ],
+  imports: [RouterLink, TranslateModule],
   templateUrl: './items.component.html',
   styleUrl: './items.component.css'
 })
 export class ItemsComponent {
   private itemService = inject(ItemService);
   private router = inject(Router);
+  private destroyRef = inject(DestroyRef);
   
   items = signal<Item[]>([]);
   selectedItem = signal<Item | null>(null);
@@ -31,7 +29,7 @@ export class ItemsComponent {
 
   getItems(): void {
     this.itemService.getItems()
-      .pipe(takeUntilDestroyed())
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe(items => {
         this.isLoading.set(false);
         this.items.set(items);
@@ -49,10 +47,10 @@ export class ItemsComponent {
   deleteItem(item: Item): void {
     // Optimistically update UI first
     this.items.update(items => items.filter(h => h !== item));
-    
+
     // Then perform the actual delete operation
     this.itemService.deleteItem(item.id)
-      .pipe(takeUntilDestroyed())
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         error: (err) => {
           console.error('Error deleting item:', err);
